@@ -154,6 +154,17 @@ journalctl -u ssh -xe
 
 3. Investigate resource usage and collect more diagnostic information.
 
+## Screenshots
+
+Screenshots from today's troubleshooting drill are available in the `screenshots/` folder.
+
+- Environment checks
+- Filesystem sanity
+- CPU and memory snapshot
+- Disk usage
+- Network checks
+- SSH logs review
+
 ```bash
 top
 free -h
