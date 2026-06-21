@@ -158,6 +158,7 @@ journalctl -u ssh -xe
 top
 free -h
 df -h
+
 ```
 
 ---
