@@ -140,23 +140,25 @@ tail -n 50 /var/log/syslog
 
 ## If This Worsens
 
-1. Restart the SSH service if necessary.
+### 1. Restart the SSH service if necessary.
 
 ```bash
 sudo systemctl restart ssh
 ```
 
-2. Review detailed logs and enable additional logging if required.
+### 2. Review detailed logs and enable additional logging if required.
 
 ```bash
 journalctl -u ssh -xe
 ```
 
-3. Investigate resource usage and collect more diagnostic information.
+### 3. Investigate resource usage and collect more diagnostic information.
 
 ```bash
 top
 free -h
+df -h
+```
 
 ---
 
@@ -164,11 +166,18 @@ free -h
 
 Screenshots from today's troubleshooting drill are available in the `screenshots/` folder.
 
-- Environment checks
-- Filesystem sanity
-- CPU and memory snapshot
-- Disk usage
-- Network checks
-- SSH logs review
-df -h
-```
+* Environment.png
+* Filesystem Sanity.png
+* CPU.png
+* Memory.png
+* Disk Usage.png
+* Network.png
+* Logs Review.png
+* SSH Logs.png
+
+---
+
+## Summary
+
+Performed a Linux troubleshooting drill on an Ubuntu EC2 instance by checking system information, filesystem health, CPU and memory usage, disk utilization, network ports, and SSH logs. Observed normal system behavior and documented the commands and findings as a reusable runbook.
+
