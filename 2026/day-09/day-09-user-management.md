@@ -1,4 +1,4 @@
-# Day 09 – Linux User & Group Management Challenge
+# Day 09 – Linux User & Group Management
 
 ## 📌 Objective
 
