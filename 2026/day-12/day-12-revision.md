@@ -44,15 +44,15 @@ journalctl -u ssh
 
 #### Running Processes
 
-![Running Processes](screenshots/01-running-processes.png)
+![Running Processes](screenshots/01-running-processes.png.png)
 
 #### SSH Service Status
 
-![SSH Service Status](screenshots/02-ssh-service-status.png)
+![SSH Service Status](screenshots/02-ssh-service-status.png.png)
 
 #### SSH Service Logs
 
-![SSH Service Logs](screenshots/03-ssh-service-logs.png)
+![SSH Service Logs](screenshots/03-ssh-service-logs.png.png)
 
 ### 📝 Observation
 
@@ -93,7 +93,7 @@ ls -l
 
 ### 📸 Output
 
-![File Skills Revision](screenshots/04-file-skills-revision.png)
+![File Skills Revision](screenshots/04-file-skills-revision.png.png)
 
 ### 📝 Observation
 
@@ -140,7 +140,7 @@ ls -l ownership.txt
 
 ### 📸 Output
 
-![User Ownership Revision](screenshots/05-user-ownership-revision.png)
+![User Ownership Revision](screenshots/05-user-ownership-revision.png.png)
 
 ### 📝 Observation
 
