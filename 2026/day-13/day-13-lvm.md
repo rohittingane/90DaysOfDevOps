@@ -30,7 +30,7 @@ After switching, all administrative commands can be executed without using `sudo
 
 ### 📸 Output
 
-![Root User](Screenshots/01-root-user.png)
+![Root User](Screenshots/01-root-user.png.png)
 
 ---
 
@@ -74,7 +74,7 @@ These commands verify whether any Physical Volumes, Volume Groups, or Logical Vo
 
 ### 📸 Output
 
-![Current Storage](Screenshots/02-current-storage-check.png)
+![Current Storage Check](Screenshots/02-current-storage-check.png.png)
 
 ---
 
@@ -96,7 +96,7 @@ Created a new EBS volume in the same Availability Zone as the EC2 instance.
 
 ### 📸 Output
 
-![EBS Volume Created](Screenshots/03-ebs-volume-created.png)
+![EBS Volume Created](Screenshots/03-ebs-volume-created.png.png)
 
 ---
 
@@ -118,7 +118,7 @@ Selected the running EC2 instance and attached the EBS volume using `/dev/sdf`.
 
 ### 📸 Output
 
-![Attach EBS Volume](Screenshots/04-attaching-ebs-volume.png)
+![Attaching EBS Volume](Screenshots/04-attaching-ebs-volume.png.png)
 
 ---
 
@@ -150,7 +150,7 @@ The newly attached disks appeared as:
 
 ### 📸 Output
 
-![Attached Volumes](Screenshots/05-lsblk-after-volume-attachment.png)
+![lsblk After Volume Attachment](Screenshots/05-lsblk-after-volume-attachment.png.png)
 
 ---
 
@@ -182,7 +182,7 @@ Each attached EBS volume was initialized using `pvcreate`.
 
 ### 📸 Output
 
-![Physical Volume](Screenshots/06-physical-volume-created.png)
+![Physical Volume Created](Screenshots/06-physical-volume-created.png.png)
 
 ---
 
@@ -214,7 +214,7 @@ Combined two Physical Volumes into one Volume Group named `rohit_vg`.
 
 ### 📸 Output
 
-![Volume Group](Screenshots/07-volume-group-created.png)
+![Volume Group Created](Screenshots/07-volume-group-created.png.png)
 
 ---
 
@@ -246,7 +246,7 @@ Allocated 15GB from the Volume Group.
 
 ### 📸 Output
 
-![Logical Volume](Screenshots/08-logical-volume-created.png)
+![Logical Volume Created](Screenshots/08-logical-volume-created.png.png)
 
 ---
 
@@ -286,7 +286,7 @@ Formatted using EXT4, mounted it, and verified using `df -h`.
 
 ### 📸 Output
 
-![Logical Volume Mounted](Screenshots/09-logical-volume-mounted.png)
+![Logical Volume Mounted](Screenshots/09-logical-volume-mounted.png.png)
 
 ---
 
@@ -326,7 +326,8 @@ Created a directory and confirmed it exists.
 
 ### 📸 Output
 
-![Logical Volume Verification](Screenshots/10-logical-volume-verification.png)
+![Logical Volume Verification](Screenshots/10-logical-volume-verification.png.png)
+
 
 ---
 
@@ -362,7 +363,7 @@ Extended the Logical Volume by 200MB and resized the EXT4 filesystem online.
 
 ### 📸 Output
 
-![Logical Volume Extended](Screenshots/11-logical-volume-extended-200mb.png)
+![Logical Volume Extended](Screenshots/11-logical-volume-extended-200mb.png.png)
 
 ---
 
