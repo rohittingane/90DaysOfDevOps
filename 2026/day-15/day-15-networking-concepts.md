@@ -276,9 +276,12 @@ ss -tulpn
 ping google.com
 
 tracepath google.com
+
 curl -I https://google.com
 
 netstat -an | head
+
+nc -zv localhost 22
 ```
 
 ---
@@ -287,11 +290,9 @@ netstat -an | head
 
 | Screenshot | Description |
 |------------|-------------|
-| 01-dns-lookup.png | DNS lookup using dig |
-| 02-ip-address-information.png | IP address information |
-| 03-ping-and-tracepath.png | Connectivity test |
-| 04-listening-ports.png | Listening ports using ss |
-| 05-http-check.png | HTTP response using curl |
+| 01-dns-lookup.png | DNS lookup using the `dig google.com` command showing the A record and TTL. |
+| 02-ip-address-information.png | Displayed network interface details using `ip addr show` and identified the private IPv4 address. |
+| 04-listening-ports.png | Verified listening services and matched running services with their ports using `ss -tulpn`. |
 
 ---
 
