@@ -5,82 +5,59 @@
 Today I learned the fundamental networking concepts that every DevOps Engineer should understand. I explored how DNS resolves domain names, how IP addresses work, the basics of CIDR and subnetting, and why ports are important for network communication.
 
 ---
+## Task 1 – DNS (How Names Become IPs)
 
-# Task 1 – DNS (How Names Become IPs)
+### What happens when you type google.com in a browser?
 
-## What happens when you type google.com in a browser?
+When you type `google.com` in a browser, the browser first contacts a DNS server to find the IP address of the domain. After receiving the IP address, it establishes a connection with the server and sends an HTTP/HTTPS request. The server then responds with the requested webpage.
 
-When we type `google.com` in a browser, the browser first asks a DNS server to convert the domain name into an IP address. Once the IP address is received, the browser connects to that server using the IP address and sends an HTTP/HTTPS request. The server then responds with the requested webpage.
+### DNS Record Types
 
----
+**A Record**
 
-## DNS Record Types
-
-### A Record
 Maps a domain name to an IPv4 address.
 
-Example:
-
-```
-google.com → 142.251.142.238
-```
-
----
-
-### AAAA Record
+**AAAA Record**
 
 Maps a domain name to an IPv6 address.
 
----
-
-### CNAME Record
+**CNAME Record**
 
 Points one domain name to another domain name.
 
-Example:
-
-```
-www.example.com → example.com
-```
-
----
-
-### MX Record
+**MX Record**
 
 Specifies the mail server responsible for receiving emails.
 
----
+**NS Record**
 
-### NS Record
-
-Specifies which DNS servers are authoritative for a domain.
+Specifies the authoritative DNS server for a domain.
 
 ---
 
-## Command
+### Command
 
 ```bash
 dig google.com
 ```
 
-### Output
-
-```text
-google.com. 20 IN A 142.251.142.238
-```
-
 ### Observation
 
-- A Record IP Address: **142.251.142.238**
-- TTL: **20 seconds**
+- Successfully resolved **google.com** into an IPv4 address.
+- Identified the **A Record** and its **TTL** value.
+- Confirmed that DNS resolution is working properly.
+
+### Output
+
+![DNS Lookup](Screenshot/01-dns-lookup.png)
 
 ---
 
-# Task 2 – IP Addressing
+## Task 2 – IP Addressing
 
-## What is an IPv4 Address?
+### What is an IPv4 Address?
 
-An IPv4 address is a unique address assigned to every device connected to a network. It consists of four numbers separated by dots.
+An IPv4 address is a unique numerical address assigned to every device connected to a network. It contains four octets separated by dots.
 
 Example:
 
@@ -88,13 +65,11 @@ Example:
 192.168.1.10
 ```
 
----
+### Public IP vs Private IP
 
-## Public IP vs Private IP
+**Public IP**
 
-### Public IP
-
-A Public IP is accessible over the internet.
+A Public IP is accessible from the internet.
 
 Example:
 
@@ -102,11 +77,9 @@ Example:
 13.48.xx.xx
 ```
 
----
+**Private IP**
 
-### Private IP
-
-A Private IP is used only inside private networks.
+A Private IP is used only inside a private network.
 
 Example:
 
@@ -114,9 +87,7 @@ Example:
 172.31.36.59
 ```
 
----
-
-## Private IP Ranges
+### Private IP Ranges
 
 ```
 10.0.0.0 – 10.255.255.255
@@ -128,89 +99,85 @@ Example:
 
 ---
 
-## Command
+### Command
 
 ```bash
+hostname -I
+
 ip addr show
 ```
 
 ### Observation
 
-```
-172.31.36.59/20
-```
+- Verified the private IP address of the EC2 instance.
+- Checked the available network interfaces.
+- Confirmed that `172.31.36.59` belongs to the private IP range.
+- Observed the Docker bridge interface (`172.17.0.1`).
 
-This belongs to the **172.16.0.0 – 172.31.255.255** range, so it is a **Private IP Address**.
+### Output
 
----
-
-# Task 3 – CIDR & Subnetting
-
-## What does /24 mean?
-
-`/24` means the first **24 bits** represent the network portion and the remaining **8 bits** represent host addresses.
+![IP Address Information](Screenshot/02-ip-address-information.png)
 
 ---
 
-## Why do we subnet?
+## Task 3 – CIDR & Subnetting
 
-Subnetting divides a large network into smaller networks.
+### What does /24 mean?
+
+`/24` means the first **24 bits** represent the network portion and the remaining **8 bits** represent the host portion.
+
+---
+
+### Why do we subnet?
+
+Subnetting divides one large network into multiple smaller networks.
 
 Benefits:
 
 - Better network management
 - Improved security
-- Reduced unnecessary network traffic
+- Reduced broadcast traffic
 - Efficient use of IP addresses
 
 ---
 
-## CIDR Table
+### CIDR Table
 
 | CIDR | Subnet Mask | Total IPs | Usable Hosts |
-|------|-------------|-----------|--------------|
+|------|-------------|----------:|-------------:|
 | /24 | 255.255.255.0 | 256 | 254 |
 | /16 | 255.255.0.0 | 65,536 | 65,534 |
 | /28 | 255.255.255.240 | 16 | 14 |
 
 ---
 
-# Task 4 – Ports (The Doors to Services)
+## Task 4 – Ports (The Doors to Services)
 
-## What is a Port?
+### What is a Port?
 
-A port is a communication endpoint on a computer.
-
-An IP address identifies the server, while a port identifies the service running on that server.
+A port is a logical communication endpoint. An IP address identifies the device, while the port identifies the service running on that device.
 
 Example:
 
 ```
-13.60.xx.xx:22
+172.31.36.59:22
 ```
 
-Here,
-
-- IP identifies the server.
-- Port 22 identifies the SSH service.
-
----
-
-## Common Ports
+### Common Ports
 
 | Port | Service |
 |------|----------|
-| 22 | SSH |
-| 80 | HTTP |
-| 443 | HTTPS |
-| 53 | DNS |
-| 3306 | MySQL |
-| 6379 | Redis |
-| 27017 | MongoDB |
+|22|SSH|
+|80|HTTP|
+|443|HTTPS|
+|53|DNS|
+|3306|MySQL|
+|6379|Redis|
+|27017|MongoDB|
 
 ---
 
-## Command
+### Command
 
 ```bash
 ss -tulpn
@@ -218,14 +185,16 @@ ss -tulpn
 
 ### Observation
 
-From the output:
+- Verified that **SSH** is listening on **Port 22**.
+- Verified that **DNS Resolver** is listening on **Port 53**.
+- Confirmed active listening services running on the EC2 instance.
 
-| Port | Service |
-|------|----------|
-| 22 | SSH (sshd) |
-| 53 | DNS (systemd-resolved) |
+### Output
+
+![Listening Ports](Screenshot/04-listening-ports.png)
 
 ---
+
 
 # Task 5 – Putting It Together
 
