@@ -67,7 +67,7 @@ chmod +x hello.sh
 
 ## Output
 
-![First Shell Script](Screenshot/01-first-shell-script.png)
+![First Shell Script](Screenshots/01-first-shell-script.png)
 
 ---
 
@@ -178,7 +178,7 @@ chmod +x variables.sh
 
 ## Output
 
-![Variables Script](Screenshot/02-variables-script.png)
+![Variables Script](Screenshots/02-variables-script.png)
 
 ---
 
@@ -242,7 +242,7 @@ chmod +x greet.sh
 
 ## Output
 
-![User Input](Screenshot/03-user-input-read.png)
+![User Input](Screenshots/03-user-input-read.png)
 
 ---
 
@@ -350,7 +350,7 @@ chmod +x file_check.sh
 
 ## Output
 
-![If Else and File Check](Screenshot/04-if-else-file-check.png)
+![If Else and File Check](Screenshots/04-if-else-file-check.png)
 
 ---
 
@@ -439,7 +439,7 @@ chmod +x server_check.sh
 
 ## Output
 
-![Server Check Script](2026/day-16/Screenshots/05-server-check-script.png)
+![Server Check Script](Screenshots/05-server-check-script.png)
 
 ---
 
