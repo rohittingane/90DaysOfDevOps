@@ -439,7 +439,7 @@ chmod +x server_check.sh
 
 ## Output
 
-![Server Check Script](Screenshot/05-server-check-script.png)
+![Server Check Script](2026/day-16/Screenshots/05-server-check-script.png)
 
 ---
 
