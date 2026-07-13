@@ -60,7 +60,6 @@ Done!
 - Updating variables inside a loop
 
 ---
-
 # Task 3 – Command-Line Arguments
 
 ## Scripts
@@ -68,21 +67,44 @@ Done!
 - `args_demo.sh`
 
 ### Purpose
-Learned how to pass values while running a shell script, making scripts more flexible and reusable.
 
-### Concepts Learned
-- `$0` → Script name
-- `$1` → First argument
-- `$#` → Total number of arguments
-- `$@` → All arguments
+The goal of this task was to understand how a shell script can accept values while running instead of using hardcoded values. This makes scripts reusable because the same script can work with different inputs.
 
-### Example
+For example:
 
 ```bash
 ./greet.sh Rohit
 ```
 
-**Output**
+Output
+
+```text
+Hello, Rohit!
+```
+
+Instead of editing the script every time, I can simply pass a different name while executing it.
+
+---
+
+### Concepts Learned
+
+| Variable | Purpose |
+|----------|----------|
+| `$0` | Displays the script name |
+| `$1` | First command-line argument |
+| `$2` | Second command-line argument |
+| `$#` | Total number of arguments |
+| `$@` | Displays all arguments |
+
+---
+
+### Positive Example
+
+```bash
+./greet.sh Rohit
+```
+
+Output
 
 ```text
 Hello, Rohit!
@@ -90,32 +112,177 @@ Hello, Rohit!
 
 ---
 
-# Task 4 – Install Packages via Script
+### Another Example
 
-## Script
-`install_packages.sh`
+```bash
+./args_demo.sh Linux Docker EC2
+```
 
-### Purpose
-Created a script to automate package installation by checking whether packages are already installed before installing them.
+Output
 
-### Features
-- Checks if a package is installed.
-- Installs missing packages.
-- Skips packages that are already installed.
-- Verifies root privileges using `$EUID`.
-
-### Packages Used
-- nginx
-- curl
-- wget
-
-### Concepts Learned
-- `$EUID`
-- `dpkg -s`
-- Package automation
-- Root user validation
+```text
+Script Name: ./args_demo.sh
+Total Arguments: 3
+All Arguments: Linux Docker EC2
+```
 
 ---
+
+### Mistakes I Made
+
+Initially I executed:
+
+```bash
+./greet.sh Devops engg Rohit
+```
+
+I expected:
+
+```text
+Hello, Devops engg Rohit!
+```
+
+But the output was:
+
+```text
+Hello, Devops!
+```
+
+Reason:
+
+Shell treats spaces as separators, so:
+
+```
+$1 = Devops
+$2 = engg
+$3 = Rohit
+```
+
+I learned that if I want the entire text as one argument, I should use quotes.
+
+Correct command:
+
+```bash
+./greet.sh "Devops engg Rohit"
+```
+
+Output:
+
+```text
+Hello, Devops engg Rohit!
+```
+
+I also accidentally opened the wrong file (`grgs_demo.sh`) while editing and later corrected it.
+
+---
+
+### Real DevOps Use Case
+
+A deployment script can receive the environment name as an argument.
+
+Example:
+
+```bash
+./deploy.sh production
+```
+
+Instead of creating separate scripts for production, staging, and testing, one script can handle all environments using command-line arguments.
+
+---
+
+# Task 5 – Error Handling
+
+## Script
+
+`safe_script.sh`
+
+### Purpose
+
+The purpose of this task was to make shell scripts safer by handling errors gracefully instead of allowing the script to fail unexpectedly.
+
+---
+
+### Concepts Learned
+
+- `set -e`
+- `||` operator
+- Error handling
+- Safe scripting
+
+---
+
+### Positive Example
+
+During the first execution:
+
+```text
+Script completed successfully
+```
+
+The script:
+
+- Created the directory
+- Entered the directory
+- Created a file successfully
+
+Everything worked as expected.
+
+---
+
+### Existing Directory Scenario
+
+When I executed the script again, the directory already existed.
+
+Output:
+
+```text
+Directory already exists
+Script completed successfully
+```
+
+Instead of stopping abruptly, the script displayed a meaningful message and continued.
+
+---
+
+### Mistake I Learned
+
+Without using:
+
+```bash
+||
+```
+
+the script would simply fail with:
+
+```text
+mkdir: cannot create directory
+```
+
+and the user would only see an error message.
+
+Using:
+
+```bash
+mkdir /tmp/devops-test || echo "Directory already exists"
+```
+
+provides a much clearer explanation of what happened.
+
+---
+
+### Why Error Handling Matters
+
+If a deployment or backup script fails unexpectedly in production, it becomes difficult to identify the issue.
+
+Adding proper error handling makes scripts easier to debug and prevents unexpected failures.
+
+---
+
+### Real DevOps Use Case
+
+While deploying an application, directories or configuration files may already exist.
+
+Instead of failing, a well-written script detects the situation, informs the user, and safely continues wherever possible.
 
 # Task 5 – Error Handling
 
