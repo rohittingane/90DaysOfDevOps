@@ -42,7 +42,7 @@ gzip
 
 ## Output
 
-![Log Rotation Script Execution](./1.log-rotation-success.png)
+![Log Rotation Script Execution](./Screenshots/1.log-rotation-success.png)
 
 ---
 
@@ -84,7 +84,7 @@ date
 
 ## Output
 
-![Server Backup Script Execution](./2-server-backup-script.png)
+![Server Backup Script Execution](./Screenshots/2-server-backup-script.png)
 
 ---
 
@@ -135,7 +135,7 @@ crontab -l
 
 ## Output
 
-![Crontab Configuration](./3-crontab-output.png)
+![Crontab Configuration](./Screenshots/3-crontab-output.png)
 
 ---
 
@@ -182,7 +182,7 @@ cat /var/log/maintenance.log
 
 ## Output
 
-![Scheduled Maintenance Script Execution](./4-maintenance-script-output.png)
+![Scheduled Maintenance Script Execution](./Screenshots/4-maintenance-script-output.png)
 
 ---
 
