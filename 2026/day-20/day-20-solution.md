@@ -122,8 +122,7 @@ Log file 'sample_log.log' found. Proceeding with analysis...
 
 The screenshot below demonstrates the input validation process. It shows how the script handles missing arguments, invalid file names, and successfully validates an existing log file before starting the analysis.
 
-![Task 1 - Input Validation](1.Input%20and%20Validation.png)
-
+![Task 1](./1.Input and Validation.png)
 ---
 
 ## 📖 Explanation
@@ -192,7 +191,7 @@ Total Error Count: 10
 
 The screenshot below displays the total number of **ERROR** and **Failed** entries identified during log analysis.
 
-![Task 2 - Error Count](2.Error%20Count.png)
+![Task 2](./2.Error Count.png)
 
 ---
 
@@ -270,7 +269,7 @@ Line 9: CRITICAL Database connection lost
 
 The screenshot below shows all **CRITICAL** events detected in the log file along with their corresponding line numbers.
 
-![Task 3 - Critical Events](3.Critical%20Events.png)
+![Task 3](./3.Critical Events.png)
 
 ---
 
@@ -361,7 +360,7 @@ echo "$TOP_ERRORS"
 
 The screenshot below displays the **Top 5** most frequently occurring error messages identified from the log file.
 
-![Task 4 - Top Error Messages](4.Top%20Error%20Messages.png)
+![Task 4](./4.Top Error Messages.png)
 
 ---
 
@@ -450,7 +449,7 @@ Report generated: log_report_2026-07-15.txt
 
 The screenshot below shows the generated summary report containing the log analysis details, including total log entries, error count, top error messages, and critical events.
 
-![Task 5 - Summary Report](5.Summary%20Report.png)
+![Task 5](./5.Summary Report.png)
 
 ---
 
@@ -526,7 +525,7 @@ Log file archived to archive/sample_log.log
 
 The screenshot below shows the successful archiving of the processed log file into the **archive** directory.
 
-![Task 6 - Archive Processed Logs](6.Archive%20Processed%20Logs.png)
+![Task 6](./6.Archive Processed Logs.png)
 
 ---
 
