@@ -1,130 +1,51 @@
-# 🚀 90DaysOfDevOps
-### Learn • Build • Practice • Become Job-Ready
+# 🚀 90DaysOfDevOps — My Journey
 
-Welcome to **90DaysOfDevOps**, a structured and hands-on DevOps challenge by **TrainWithShubham**.
+### From Production Support to DevOps Engineer
 
-This repository is designed to help you **build real DevOps skills step by step in 90 days** — not by watching endless videos, but by **doing daily tasks**, building projects, and thinking like a **production-ready DevOps engineer**.
+Hi, I'm **Rohit Tingane**, currently working as a Production Support Analyst. 
+While working in support, I got curious about how applications are deployed, 
+monitored, and maintained in production — that curiosity led me to start this 
+90-day DevOps learning challenge.
 
-This is not a theory-heavy course.  
-This is a **discipline + execution challenge**.
+📌 **Currently on: Day 20**  
+🔗 [Read my full learning plan →](./2026/day-01/learning-plan.md)
 
----
-
-## 🎯 What is #90DaysOfDevOps?
-
-**#90DaysOfDevOps** is a **day-wise DevOps learning challenge** where:
-
-- Every day has **one clear task**
-- Every task has a **real-world DevOps outcome**
-- Every learner builds a **public GitHub proof of work**
-- Every concept is reinforced through **hands-on practice**
-- Learning is aligned with **live classes and recordings**
-
-By the end of 90 days, you will have:
-- Strong DevOps fundamentals
-- Multiple mini-projects
-- One end-to-end DevOps capstone project
-- A GitHub profile that clearly shows consistency
-- Confidence to handle DevOps interviews and production systems
+This repo is my daily proof of work — hands-on tasks, notes, and mini-projects 
+as I build real DevOps skills, one day at a time.
 
 ---
 
-## 🧠 Who Is This For?
+## 📅 My Daily Progress
 
-This challenge is ideal for:
+| Day | Topic | Link |
+|-----|-------|------|
+| Day 01 | Learning Plan & Motivation | [View](./2026/day-01/) |
+| Day 20 | Latest solution | [View](./2026/day-20-solution.md) |
 
-- Students and freshers entering DevOps or Cloud
-- Working professionals switching to DevOps / SRE / Cloud roles
-- Developers who want to understand infrastructure and CI/CD
-- Anyone who believes **consistency beats talent**
-
-No prior DevOps experience is required.  
-**Commitment is mandatory.**
+*(I'll keep updating this table as I progress)*
 
 ---
 
-## 🗂 Repository Structure
-
-```
-90DaysOfDevOps/
-│
-├── README.md
-├── CONTRIBUTING.md
-├── LICENSE
-├── .gitignore
-│
-├── scripts/
-│   └── helper-scripts.sh
-│
-├── day-01/
-│   └── README.md
-├── day-02/
-│   └── README.md
-├── ...
-├── day-90/
-│   └── README.md
-```
-
----
-
-## 📅 How the Challenge Works
-
-- **One day = one task**
-- Tasks are aligned with **live classes**
-- Live class days focus on **core concepts**
-- Weekdays focus on **practice and reinforcement**
-- Daily commits are encouraged
-
-Even **30–60 minutes per day** is enough if done honestly.
-
----
-
-## 🛠 What You Will Learn
+## 🛠 What I'm Learning
 
 - Linux fundamentals and troubleshooting
 - Shell scripting and automation
-- Networking basics for DevOps
 - Git and GitHub workflows
 - Docker and containerization
-- AWS core and advanced services
-- CI/CD using Jenkins, GitHub Actions, GitLab
-- DevSecOps fundamentals
-- Kubernetes, Helm, ArgoCD
+- AWS core services
+- CI/CD using Jenkins, GitHub Actions
+- Kubernetes basics
 - Terraform and Ansible
-- Observability with Grafana, Prometheus, OpenTelemetry
-- End-to-end DevOps project
 
 ---
 
-## 📦 How to Participate
+## 🌍 Follow My Journey
 
-1. Fork this repository
-2. Clone your fork
-3. Navigate to the current `day-XX` folder
-4. Complete the task
-5. Commit and push your work
-
----
-
-## 🌍 Learn in Public
-
-Share your progress on LinkedIn:
-
-```
+I share daily progress on LinkedIn using:
 #90DaysOfDevOps
 #DevOpsKaJosh
-#TrainWithShubham
-```
 
 ---
 
-## ❤️ Final Note
-
-DevOps is not about tools.  
-It is about **ownership, reliability, and consistency**.
-
-One day at a time.  
-One commit at a time.
-
-Happy Learning  
-**TrainWithShubham**
+*This challenge is originally created by TrainWithShubham. This repo documents 
+my personal solutions and learning as I go through it.*
