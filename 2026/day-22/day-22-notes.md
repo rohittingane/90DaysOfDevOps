@@ -184,9 +184,9 @@ git log --oneline
 ```
 
 📸 **Screenshots:**
-- `screenshots/03.1-git-commands-documentation-part1.png`
-- `screenshots/03.2-git-commands-documentation-part2.png`
-- `screenshots/03.3-git-commands-documentation-part3.png`
+- `Screenshots/03.1-git-commands-documentation-part1.png`
+- `Screenshots/03.2-git-commands-documentation-part2.png`
+- `Screenshots/03.3-git-commands-documentation-part3.png`
 
 ---
 
@@ -214,7 +214,7 @@ git commit -m "Added Git commands documentation"
 git log
 ```
 
-📸 **Screenshot:** `screenshots/04-git-stage-commit-history.png`
+📸 **Screenshot:** `Screenshots/04-git-stage-commit-history.png`
 
 ---
 
@@ -230,7 +230,7 @@ git commit -m "Updated git-commands.md with workflow commands"
 git log --oneline
 ```
 
-📸 **Screenshot:** `screenshots/05-build-commit-history.png`
+📸 **Screenshot:** `Screenshots/05-build-commit-history.png`
 
 ---
 
@@ -238,7 +238,7 @@ git log --oneline
 
 A full theory write-up covering Git concepts, workflow, and interview prep, saved as `day-22-notes.md` in the repository.
 
-📸 **Screenshot:** `screenshots/06-day-22-notes.png`
+📸 **Screenshot:** `Screenshots/06-day-22-notes.png`
 
 ---
 
