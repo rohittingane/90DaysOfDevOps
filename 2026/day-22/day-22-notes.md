@@ -94,7 +94,9 @@ user.name=Rohit Tingane
 user.email=your-email@example.com
 ```
 
-📸 **Screenshot:** `screenshots/01-git-install-config.png`
+📸 **Screenshot**
+
+![Git Install & Config](screenshots/01-git-install-config.png)
 
 ---
 
@@ -132,7 +134,9 @@ payment-service/   (no Git)   → changes untracked, no accountability
 payment-service/   (with Git) → every developer's change is tracked
 ```
 
-📸 **Screenshot:** `screenshots/02-create-git-repository.png`
+📸 **Screenshot**
+
+![Create Git Repository](screenshots/02-create-git-repository.png)
 
 ---
 
@@ -183,10 +187,13 @@ git log
 git log --oneline
 ```
 
-📸 **Screenshots:**
-- `Screenshots/03.1-git-commands-documentation-part1.png`
-- `Screenshots/03.2-git-commands-documentation-part2.png`
-- `Screenshots/03.3-git-commands-documentation-part3.png`
+📸 **Screenshots**
+
+![Git Commands Documentation](screenshots/03-git-commands-documentation.png)
+
+![Git Commands Documentation Part 1](screenshots/03.1-git-commands-documentation.png)
+
+![Git Commands Documentation Part 2](screenshots/03.2-git-commands-documentation.png)
 
 ---
 
@@ -214,7 +221,9 @@ git commit -m "Added Git commands documentation"
 git log
 ```
 
-📸 **Screenshot:** `Screenshots/04-git-stage-commit-history.png`
+📸 **Screenshot**
+
+![Stage & Commit History](screenshots/04-git-stage-commit-history.png)
 
 ---
 
@@ -230,7 +239,9 @@ git commit -m "Updated git-commands.md with workflow commands"
 git log --oneline
 ```
 
-📸 **Screenshot:** `Screenshots/05-build-commit-history.png`
+📸 **Screenshot**
+
+![Build Commit History](screenshots/05-build-commit-history.png)
 
 ---
 
@@ -238,7 +249,9 @@ git log --oneline
 
 A full theory write-up covering Git concepts, workflow, and interview prep, saved as `day-22-notes.md` in the repository.
 
-📸 **Screenshot:** `Screenshots/06-day-22-notes.png`
+📸 **Screenshot**
+
+![Day 22 Notes](screenshots/06-day-22-notes.png)
 
 ---
 
@@ -288,9 +301,9 @@ devops-git-practice/
 └── screenshots/
     ├── 01-git-install-config.png
     ├── 02-create-git-repository.png
-    ├── 03.1-git-commands-documentation-part1.png
-    ├── 03.2-git-commands-documentation-part2.png
-    ├── 03.3-git-commands-documentation-part3.png
+    ├── 03-git-commands-documentation.png
+    ├── 03.1-git-commands-documentation.png
+    ├── 03.2-git-commands-documentation.png
     ├── 04-git-stage-commit-history.png
     ├── 05-build-commit-history.png
     └── 06-day-22-notes.png
