@@ -72,3 +72,263 @@ ls
 ```
 
 After switching back to the `main` branch, `feature.txt` will not be visible because it exists only in the `feature-1` branch.
+
+Task 2: Branching Commands - Hands-On
+
+List all branches
+
+Command:
+
+bashgit branch
+
+Create a new branch
+
+Command:
+
+bashgit branch feature-1
+
+Switch to feature-1 branch
+
+Command:
+
+bashgit switch feature-1
+
+Create and switch to feature-2 in one command
+
+Command:
+
+bashgit switch -c feature-2
+
+Difference between git switch and git checkout
+
+git switch
+
+Modern command used for switching branches.
+
+It is easier and safer for branch operations.
+
+Example:
+
+bashgit switch master
+
+git checkout
+
+Older command used for switching branches and restoring files.
+
+It has multiple functionalities.
+
+Example:
+
+bashgit checkout master
+
+Commit changes on feature-1
+
+Steps:
+
+bashgit switch feature-1
+echo "Feature 1 changes" > feature1.txt
+git add .
+git commit -m "Added feature-1 changes"
+
+Verify feature-1 changes are not on main
+
+Switch back:
+
+bashgit switch master
+
+The feature1.txt file is not available in the main branch because the commit exists only in feature-1.
+
+Delete unused branch
+
+Command:
+
+bashgit branch -d feature-2
+
+Screenshots
+
+Show Image
+
+Show Image
+
+Show Image
+
+
+Task 3: Push Branches to GitHub
+
+Connect local repository with GitHub remote
+
+Command:
+
+bashgit remote add origin repository-url
+
+Push master branch
+
+Command:
+
+bashgit push -u origin master
+
+Push feature-1 branch
+
+Command:
+
+bashgit push -u origin feature-1
+
+Difference between origin and upstream
+
+origin
+
+Origin is the remote repository that points to my GitHub repository.
+
+It is used for pushing and pulling my changes.
+
+Example:
+
+origin → My GitHub repository
+
+Screenshots
+
+Show Image
+
+Show Image
+
+upstream
+
+Upstream is the original repository from which a project was forked.
+
+It is used to get updates from the original repository.
+
+Example:
+
+upstream → Original repository
+
+
+Task 4: Pull from GitHub
+
+Making changes directly on GitHub
+
+A file was modified using the GitHub editor and committed directly to the repository.
+
+Pull changes from GitHub
+
+Command:
+
+bashgit pull origin master
+
+This downloads the latest changes from GitHub and merges them into the local branch.
+
+Difference between git fetch and git pull
+
+git fetch
+
+Downloads changes from the remote repository.
+
+Does not merge changes automatically.
+
+Used to review changes before applying them.
+
+Example:
+
+bashgit fetch origin
+
+git pull
+
+Downloads changes and automatically merges them into the current branch.
+
+It is a combination of fetch and merge.
+
+Example:
+
+bashgit pull origin master
+
+Screenshots
+
+Show Image
+
+Show Image
+
+Show Image
+
+
+Task 5: Clone vs Fork
+
+Clone
+
+Clone creates a local copy of a Git repository on my machine.
+
+It is used for local development.
+
+It does not create a new repository on GitHub.
+
+Example:
+
+bashgit clone repository-url
+
+Fork
+
+Fork creates a personal copy of another user's repository on my GitHub account.
+
+It allows me to modify a project without affecting the original repository.
+
+It is mainly used for open-source contributions.
+
+When would you clone vs fork?
+
+Clone:
+Use clone when:
+
+
+Working on my own repository.
+I have access to the repository.
+I want a local copy for development.
+
+
+Fork:
+Use fork when:
+
+
+Contributing to someone else's project.
+I do not have write access to the original repository.
+I want to create my own version of a project.
+
+
+Keeping a fork in sync with the original repository
+
+Add original repository as upstream:
+
+bashgit remote add upstream original-repository-url
+
+Fetch latest changes:
+
+bashgit fetch upstream
+
+Merge changes:
+
+bashgit merge upstream/master
+
+Remote structure:
+
+origin   → My forked repository
+upstream → Original repository
+
+Screenshots
+
+Show Image
+
+Show Image
+
+Show Image
+
+
+Day 23 Summary
+
+Today I learned:
+
+
+Git branches and their importance
+Creating and switching branches
+Difference between git switch and git checkout
+Pushing branches to GitHub
+Difference between origin and upstream
+git fetch vs git pull
+Clone vs Fork workflow
+Keeping fork synchronized with original repository
