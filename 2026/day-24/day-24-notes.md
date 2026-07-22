@@ -21,7 +21,13 @@ I created a new branch, added some commits to it, and then merged it back into t
 
 **Why this matters:** Merging is how teams combine work from different people or features into one shared codebase, without losing anyone's changes.
 
-📸 Screenshots: `1-fast-forward-merge.png`, `2-merge-commit.png`, `3-log-history.png`, `4-conflict-setup.png`, `5-merge-conflict-resolved.png`
+**Screenshots:**
+
+![Fast Forward Merge](Screenshots/1-fast-forward-merge.png)
+![Merge Commit](Screenshots/2-merge-commit.png)
+![Log History](Screenshots/3-log-history.png)
+![Conflict Setup](Screenshots/4-conflict-setup.png)
+![Merge Conflict Resolved](Screenshots/5-merge-conflict-resolved.png)
 
 **Q&A (Notes):**
 
@@ -50,7 +56,10 @@ I created a branch, added a few commits, then added another commit to the main b
 
 **Why this matters:** Rebase keeps project history clean and easy to read, which is useful when many people are contributing.
 
-📸 Screenshots: `1-rebase-process.png`, `2-rebase-vs-merge-graph.png`
+**Screenshots:**
+
+![Rebase Process](Screenshots/1-rebase-process.png)
+![Rebase vs Merge Graph](Screenshots/2-rebase-vs-merge-graph.png)
 
 **Q&A (Notes):**
 
@@ -81,7 +90,11 @@ I made several small commits (like fixing typos, small formatting changes) on on
 
 **Why this matters:** Squashing is commonly used in real companies to keep the main project history simple and readable, especially in pull requests.
 
-📸 Screenshots: `1-squash-merge-process.png`, `2-squash-vs-regular-comparison.png`, `3-final-log-comparison.png`
+**Screenshots:**
+
+![Squash Merge Process](Screenshots/1-squash-merge-process.png)
+![Squash vs Regular Comparison](Screenshots/2-squash-vs-regular-comparison.png)
+![Final Log Comparison](Screenshots/3-final-log-comparison.png)
 
 **Q&A (Notes):**
 
@@ -109,7 +122,10 @@ I started editing a file but didn't save (commit) my work, then tried to switch 
 
 **Why this matters:** In real jobs, this happens all the time — you're in the middle of something, then get pulled away for an urgent task. Stash lets you pause your work safely without losing anything.
 
-📸 Screenshots: `1-stash-basic-workflow.png`, `2-multiple-stash-apply-vs-pop.png`
+**Screenshots:**
+
+![Stash Basic Workflow](Screenshots/1-stash-basic-workflow.png)
+![Multiple Stash Apply vs Pop](Screenshots/2-multiple-stash-apply-vs-pop.png)
 
 **Q&A (Notes):**
 
@@ -134,7 +150,10 @@ I made 3 separate commits on one branch (each fixing a different bug). Instead o
 
 **Why this matters:** This mirrors real hotfix situations — getting an urgent fix live without waiting for an entire feature to be finished.
 
-📸 Screenshots: `1-cherry-pick-conflict.png`, `2-cherry-pick-resolved-verified.png`
+**Screenshots:**
+
+![Cherry Pick Conflict](Screenshots/1-cherry-pick-conflict.png)
+![Cherry Pick Resolved and Verified](Screenshots/2-cherry-pick-resolved-verified.png)
 
 **Q&A (Notes):**
 
