@@ -64,7 +64,7 @@ This repository contains my daily hands-on practice, notes, scripts, and mini-pr
 │   └── day-27
 │
 └── README.md
-
+```
 
 ---
 
@@ -76,15 +76,7 @@ I share my daily progress and learnings on LinkedIn:
 #DevOpsKaJosh  
 #TrainWithShubham
 
----
 
-## 🙏 Credits
 
-This challenge is originally created by **TrainWithShubham**.
 
-This repository contains my personal notes, solutions, and hands-on implementations during my DevOps learning journey.
-
----
-
-🚀 Learning by building, documenting, and improving every day.
 
