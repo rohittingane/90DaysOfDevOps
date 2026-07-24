@@ -1,51 +1,90 @@
 # 🚀 90DaysOfDevOps — My Journey
 
-### From Production Support to DevOps Engineer
+## From Production Support Engineer to DevOps Engineer
 
-Hi, I'm **Rohit Tingane**, currently working as a Production Support Analyst. 
-While working in support, I got curious about how applications are deployed, 
-monitored, and maintained in production — that curiosity led me to start this 
-90-day DevOps learning challenge.
+Hi, I'm **Rohit Tingane**, a Production Support Engineer transitioning into DevOps.
 
-📌 **Currently on: Day 20**  
-🔗 [Read my full learning plan →](./2026/day-01/learning-plan.md)
+While working in production support, I became curious about how applications are deployed, automated, monitored, and managed at scale.
 
-This repo is my daily proof of work — hands-on tasks, notes, and mini-projects 
-as I build real DevOps skills, one day at a time.
+This curiosity motivated me to start my **90 Days of DevOps journey** — a hands-on learning challenge focused on building practical DevOps skills.
 
 ---
 
-## 📅 My Daily Progress
+## 📌 Progress
+
+Currently Completed: **Day 27 / 90** 🚀
+
+This repository contains my daily hands-on practice, notes, scripts, and mini-projects while learning DevOps.
+
+---
+
+## 📅 Daily Progress
 
 | Day | Topic | Link |
-|-----|-------|------|
-| Day 01 | Learning Plan & Motivation | [View](./2026/day-01/) |
-| Day 20 | Latest solution | [View](./2026/day-20-solution.md) |
-
-*(I'll keep updating this table as I progress)*
-
----
-
-## 🛠 What I'm Learning
-
-- Linux fundamentals and troubleshooting
-- Shell scripting and automation
-- Git and GitHub workflows
-- Docker and containerization
-- AWS core services
-- CI/CD using Jenkins, GitHub Actions
-- Kubernetes basics
-- Terraform and Ansible
+|---|---|---|
+| Day 01 | DevOps Introduction & Learning Plan | [View](./2026/day-01/) |
+| Day 20 | Bash Log Analyzer Project | [View](./2026/day-20/) |
+| Day 24 | Advanced Git Workflows | [View](./2026/day-24/) |
+| Day 25 | Git Reset, Revert & Branching Strategies | [View](./2026/day-25/) |
+| Day 26 | GitHub CLI - Manage GitHub from Terminal | [View](./2026/day-26/) |
+| Day 27 | GitHub Profile Makeover | [View](./2026/day-27/) |
 
 ---
 
-## 🌍 Follow My Journey
+## 🛠️ Skills I'm Building
 
-I share daily progress on LinkedIn using:
-#90DaysOfDevOps
-#DevOpsKaJosh
+### Linux & Automation
+- Linux administration
+- Shell scripting
+- Server troubleshooting
+
+### Version Control
+- Git
+- GitHub workflows
+- Branching strategies
+
+### Cloud & DevOps Tools
+- AWS fundamentals
+- Docker & Containerization
+- GitHub Actions CI/CD
+- Kubernetes fundamentals
+- Terraform basics
 
 ---
 
-*This challenge is originally created by TrainWithShubham. This repo documents 
-my personal solutions and learning as I go through it.*
+## 📂 Repository Structure
+
+```text
+90DaysOfDevOps
+
+├── 2026
+│   ├── day-01
+│   ├── day-02
+│   ├── ...
+│   └── day-27
+│
+└── README.md
+
+
+---
+
+## 🌍 Learn In Public
+
+I share my daily progress and learnings on LinkedIn:
+
+#90DaysOfDevOps  
+#DevOpsKaJosh  
+#TrainWithShubham
+
+---
+
+## 🙏 Credits
+
+This challenge is originally created by **TrainWithShubham**.
+
+This repository contains my personal notes, solutions, and hands-on implementations during my DevOps learning journey.
+
+---
+
+🚀 Learning by building, documenting, and improving every day.
+
