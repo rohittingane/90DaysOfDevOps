@@ -1,450 +1,159 @@
-# Day 28 – Revision Day: Everything from Day 1 to Day 27
+# Day 28 - DevOps Revision Day 🚀
 
 ## Overview
 
-Day 28 was a revision day to review everything I learned during the first 27 days of my DevOps journey.
+Day 28 was a revision day to review my complete DevOps learning journey from Day 1 to Day 27.
 
-I revised:
+The main focus was to revise important concepts, identify weak areas, and improve confidence through hands-on practice.
 
-- DevOps fundamentals
-- Linux administration
-- Shell scripting
-- Docker and Cloud basics
-- Networking concepts
-- Git & GitHub workflows
+During this revision, I covered:
+
+- Linux Administration
+- Shell Scripting
+- Networking Fundamentals
+- Git & GitHub Workflows
 - GitHub CLI
-- Developer branding
-
-The main goal was to identify my strong areas, weak areas, and improve confidence through revision and hands-on practice.
 
 ---
 
-# Self Assessment Checklist
+# 1. Linux Administration Revision 🐧
 
-## Linux
+Linux is one of the most important skills for a DevOps engineer.
 
-### Confident
-
-✅ Linux file system navigation  
-✅ Create, move, copy, and delete files/directories  
-✅ Process management using ps, top, kill  
-✅ Systemd service management  
-✅ File editing using nano  
-✅ CPU, memory, and disk troubleshooting  
-✅ Linux file system hierarchy  
-✅ User and group management  
-✅ File permissions using chmod  
-✅ Ownership management using chown and chgrp  
-
-### Need More Practice
-
-🔄 LVM volume management  
-🔄 Advanced networking troubleshooting  
-🔄 DNS, IP addressing, and subnet concepts  
+During my Linux revision, I practiced file management, process management, services, permissions, ownership, and system troubleshooting.
 
 ---
 
-# Shell Scripting
+## File System Navigation
 
-### Confident
+Linux follows a hierarchical file system structure.
 
-✅ Variables and user input  
-✅ Command line arguments  
-✅ if/else conditions  
-✅ for, while, until loops  
-✅ Functions  
-✅ Cron jobs  
-✅ Backup scripts  
-✅ Log analyzer projects  
+Important directories:
 
-### Need More Practice
-
-🔄 Advanced text processing using awk and sed  
-🔄 Error handling using set -euo pipefail  
-
----
-
-# Git & GitHub
-
-### Practiced Concepts
-
-✅ Initialize repository  
-✅ Stage and commit changes  
-✅ View commit history  
-✅ Create and switch branches  
-✅ Push and pull changes from GitHub  
-✅ Clone vs Fork  
-✅ Merge branches  
-✅ Fast-forward merge  
-✅ Merge commit  
-✅ Rebase  
-✅ Git stash and stash pop  
-✅ Cherry-pick commits  
-✅ Squash merge  
-✅ Git reset  
-✅ Git revert  
-✅ GitHub CLI  
-
----
-
-# Git Reset Revision
-
-## Soft Reset
-
-Command:
-
-```bash
-git reset --soft HEAD~1
-```
-
-Soft reset removes the commit but keeps the changes staged.
-
-Result:
-
-```
-Commit removed
-Changes staged
-Files preserved
-```
-
-Used when we want to modify a previous commit or combine commits.
-
----
-
-## Mixed Reset
-
-Command:
-
-```bash
-git reset --mixed HEAD~1
-```
-
-Mixed reset removes the commit and unstages the changes.
-
-Result:
-
-```
-Commit removed
-Changes unstaged
-Files preserved
-```
-
-This is the default reset mode.
-
----
-
-## Hard Reset
-
-Command:
-
-```bash
-git reset --hard HEAD~1
-```
-
-Hard reset removes the commit and deletes all changes.
-
-Result:
-
-```
-Commit removed
-Changes removed
-Working tree cleaned
-```
-
-Should be used carefully because changes can be lost permanently.
-
----
-
-# Git Revert Revision
-
-Git revert is a safer way to undo changes.
-
-Unlike reset, revert does not remove history.
-
-It creates a new commit that reverses the previous commit.
-
-Command:
-
-```bash
-git revert <commit-id>
-```
-
-Git revert is commonly used on shared branches like main/master because it keeps the history safe.
-
----
-
-# Networking Revision
-
-Important commands practiced:
-
-## Check Connectivity
-
-```bash
-ping google.com
-```
-
-## Check HTTP Response
-
-```bash
-curl example.com
-```
-
-## Check Open Ports
-
-```bash
-ss -tulnp
-```
-
-## DNS Lookup
-
-```bash
-dig google.com
-```
-
-```bash
-nslookup google.com
-```
-
-Common Ports:
-
-| Service | Port |
+| Directory | Purpose |
 |---|---|
-| SSH | 22 |
-| HTTP | 80 |
-| HTTPS | 443 |
-| DNS | 53 |
-| MySQL | 3306 |
+| / | Root directory |
+| /etc | Configuration files |
+| /var | Logs and variable data |
+| /home | User home directories |
+| /tmp | Temporary files |
+| /bin | Essential commands |
 
 ---
 
-# Shell Text Processing Revision
+## Basic File Commands
 
-## grep
-
-Used to search patterns in files.
-
-Example:
+### Check current location
 
 ```bash
-grep "ERROR" logfile.txt
+pwd
 ```
 
-## awk
-
-Used for processing columns and structured text.
-
-Example:
+### List files
 
 ```bash
-awk '{print $1}' file.txt
+ls
 ```
 
-## sed
-
-Used for searching and replacing text.
-
-Example:
+### Create files
 
 ```bash
-sed 's/error/ERROR/g' file.txt
+touch file.txt
 ```
 
-## sort and uniq
-
-Used for sorting and removing duplicate values.
-
-Example:
+### Create directory
 
 ```bash
-sort file.txt | uniq
+mkdir folder-name
 ```
 
----
-
-# Quick Fire Questions
-
-## 1. What does chmod 755 script.sh do?
-
-755 means:
-
-Owner:
-- Read
-- Write
-- Execute
-
-Group:
-- Read
-- Execute
-
-Others:
-- Read
-- Execute
-
-Example:
+### Copy files
 
 ```bash
-chmod 755 script.sh
+cp source destination
+```
+
+### Move files
+
+```bash
+mv source destination
+```
+
+### Remove files
+
+```bash
+rm file.txt
 ```
 
 ---
 
-## 2. Difference between Process and Service
+# Process Management
 
-Process:
+A process is a running instance of a program.
 
-- A running instance of a program.
+Monitoring processes helps identify performance issues.
 
-Service:
-
-- A background process managed by systemd.
-
-Example:
-
-Nginx running = Process
-
-Nginx managed by systemd = Service
-
----
-
-## 3. Find process using port 8080
+## View running processes
 
 ```bash
-ss -tulnp | grep 8080
+ps aux
 ```
 
-or
+## Real-time process monitoring
 
 ```bash
-lsof -i :8080
+top
+```
+
+## Stop a process
+
+```bash
+kill <PID>
 ```
 
 ---
 
-## 4. What does set -euo pipefail do?
+# Systemd Service Management
+
+Systemd manages services running in Linux.
+
+Examples:
+
+- Start service
+- Stop service
+- Restart service
+- Check service status
+
+
+## Check service status
 
 ```bash
-set -euo pipefail
+systemctl status nginx
 ```
 
-- `-e` → Exit script when a command fails
-- `-u` → Error when using undefined variables
-- `pipefail` → Detect failures inside pipelines
-
----
-
-## 5. Difference between git reset --hard and git revert
-
-Git reset:
-
-- Changes history
-- Mostly used for local changes
-
-Git revert:
-
-- Creates a new undo commit
-- Safe for shared branches
-
----
-
-## 6. Recommended branching strategy for a team of 5 developers
-
-GitHub Flow is suitable for a small team.
-
-Flow:
-
-1. Create feature branch
-2. Make changes
-3. Push branch
-4. Create Pull Request
-5. Review and merge
-
----
-
-## 7. What does git stash do?
-
-Git stash temporarily stores uncommitted changes.
-
-Example:
+## Start service
 
 ```bash
-git stash
+sudo systemctl start nginx
 ```
 
-Restore changes:
+## Stop service
 
 ```bash
-git stash pop
+sudo systemctl stop nginx
 ```
 
-Useful when we need to switch branches without committing unfinished work.
-
----
-
-## 8. Schedule a script every day at 3 AM
-
-Using crontab:
+## Enable service at boot
 
 ```bash
-crontab -e
-```
-
-Add:
-
-```bash
-0 3 * * * /path/script.sh
+sudo systemctl enable nginx
 ```
 
 ---
 
-## 9. Difference between git fetch and git pull
+# File Permissions
 
-git fetch:
-
-- Downloads latest changes from remote
-- Does not merge automatically
-
-git pull:
-
-- Fetch + merge changes
-
----
-
-## 10. What is LVM?
-
-LVM (Logical Volume Manager) provides flexible disk management.
-
-Advantages:
-
-- Resize volumes easily
-- Manage storage dynamically
-- Combine multiple disks
-
----
-
-# Teach It Back
-
-## Explain Git Branching
-
-Git branching allows developers to work on different features independently without affecting the main code.
-
-A branch creates a separate development path where changes can be developed and tested.
-
-Example:
-
-```bash
-git branch feature-login
-git switch feature-login
-```
-
-After completing work, the branch can be merged back into the main branch.
-
-Branching helps teams collaborate safely and manage multiple features efficiently.
-
----
-
-## Explain File Permissions to a New Linux User
-
-Linux file permissions control who can read, write, or execute a file.
+Linux permissions control access to files and directories.
 
 There are three types of users:
 
@@ -454,9 +163,12 @@ There are three types of users:
 
 Permission types:
 
-- r → Read
-- w → Write
-- x → Execute
+| Permission | Meaning |
+|---|---|
+| r | Read |
+| w | Write |
+| x | Execute |
+
 
 Example:
 
@@ -484,23 +196,252 @@ Changing permissions:
 chmod 755 script.sh
 ```
 
-File permissions help maintain security by controlling access to files and directories.
+---
+
+# Ownership Management
+
+Linux files have owners and groups.
+
+## Change owner
+
+```bash
+chown user file.txt
+```
+
+## Change group
+
+```bash
+chgrp group file.txt
+```
 
 ---
 
-## Explain What a Crontab Is and Why Sysadmins Use It
+# Disk and Memory Troubleshooting
 
-Crontab is a Linux utility used to schedule commands or scripts automatically at a specific time.
+## Check disk usage
 
-Sysadmins use cron jobs for:
+```bash
+df -h
+```
+
+## Check directory size
+
+```bash
+du -sh folder
+```
+
+## Check memory usage
+
+```bash
+free -m
+```
+
+---
+
+# 2. Shell Scripting Revision 📝
+
+Shell scripting is used to automate repetitive tasks in Linux.
+
+During this journey, I created scripts for:
+
+- Server health checks
+- Backup automation
+- Log analysis
+- Package installation
+- Cron automation
+
+---
+
+# Variables in Shell Script
+
+Variables store data that can be reused.
+
+Example:
+
+```bash
+name="Rohit"
+
+echo $name
+```
+
+Output:
+
+```
+Rohit
+```
+
+---
+
+# User Input
+
+Taking input from users:
+
+```bash
+read name
+
+echo "Hello $name"
+```
+
+---
+
+# Command Line Arguments
+
+Arguments allow passing values while executing scripts.
+
+Example:
+
+```bash
+./script.sh Rohit
+```
+
+Access argument:
+
+```bash
+echo $1
+```
+
+---
+
+# Conditional Statements
+
+Used for decision making.
+
+Example:
+
+```bash
+if [ $age -ge 18 ]
+then
+    echo "Adult"
+else
+    echo "Minor"
+fi
+```
+
+---
+
+# Loops in Shell Scripting
+
+Loops execute commands repeatedly.
+
+## For Loop
+
+Example:
+
+```bash
+for i in 1 2 3 4 5
+do
+ echo $i
+done
+```
+
+## While Loop
+
+Example:
+
+```bash
+count=1
+
+while [ $count -le 5 ]
+do
+ echo $count
+ count=$((count+1))
+done
+```
+
+---
+
+# Functions
+
+Functions help reuse code.
+
+Example:
+
+```bash
+hello()
+{
+ echo "Hello DevOps"
+}
+
+hello
+```
+
+---
+
+# Text Processing Commands
+
+## grep
+
+Search text patterns:
+
+```bash
+grep "ERROR" logfile.txt
+```
+
+## awk
+
+Process columns:
+
+```bash
+awk '{print $1}' file.txt
+```
+
+## sed
+
+Replace text:
+
+```bash
+sed 's/error/ERROR/g' file.txt
+```
+
+## sort
+
+Sort output:
+
+```bash
+sort file.txt
+```
+
+## uniq
+
+Remove duplicate values:
+
+```bash
+sort file.txt | uniq
+```
+
+---
+
+# Error Handling
+
+Used to make scripts safer.
+
+Command:
+
+```bash
+set -euo pipefail
+```
+
+Meaning:
+
+- set -e → Exit when command fails
+- set -u → Error when using undefined variables
+- pipefail → Detect pipeline failures
+
+---
+
+# Cron Jobs
+
+Cron is used to schedule automated tasks.
+
+Sysadmins use cron for:
 
 - Backups
 - Log rotation
-- System monitoring
+- Monitoring
 - Maintenance tasks
-- Cleaning temporary files
 
-Edit cron jobs:
+
+Edit cron:
 
 ```bash
 crontab -e
@@ -512,20 +453,290 @@ Example:
 0 3 * * * /home/ubuntu/backup.sh
 ```
 
-This runs the backup script every day at 3 AM.
-
-Cron jobs help automate repetitive tasks and reduce manual effort.
+Runs backup every day at 3 AM.
 
 ---
 
-# Day 28 Summary
+# 3. Networking Revision 🌐
 
-Day 28 helped me revise my complete DevOps learning journey from Day 1 to Day 27.
+Networking knowledge helps DevOps engineers troubleshoot servers and applications.
 
-I reviewed Linux administration, Shell scripting, Networking, Git & GitHub, and GitHub CLI.
+---
 
-I identified topics that need more practice and improved my understanding through hands-on revision.
+# Basic Networking Concepts
 
-Continuous practice and explaining concepts are helping me build stronger DevOps fundamentals.
+## IP Address
+
+An IP address identifies a device on a network.
+
+Example:
+
+```
+192.168.1.10
+```
+
+---
+
+## DNS
+
+DNS converts domain names into IP addresses.
+
+Example:
+
+```
+google.com → IP address
+```
+
+---
+
+## Ports
+
+Ports identify services running on a machine.
+
+Common ports:
+
+| Service | Port |
+|---|---|
+| SSH | 22 |
+| HTTP | 80 |
+| HTTPS | 443 |
+| DNS | 53 |
+
+---
+
+# Networking Commands
+
+## Check connectivity
+
+```bash
+ping google.com
+```
+
+## Check HTTP response
+
+```bash
+curl google.com
+```
+
+## Check listening ports
+
+```bash
+ss -tulnp
+```
+
+## DNS lookup
+
+```bash
+dig google.com
+```
+
+```bash
+nslookup google.com
+```
+
+---
+
+# 4. Git & GitHub Revision 🔀
+
+Git is a distributed version control system used to track code changes.
+
+---
+
+# Basic Git Workflow
+
+## Initialize repository
+
+```bash
+git init
+```
+
+## Check status
+
+```bash
+git status
+```
+
+## Add changes
+
+```bash
+git add .
+```
+
+## Commit changes
+
+```bash
+git commit -m "message"
+```
+
+## View history
+
+```bash
+git log --oneline
+```
+
+---
+
+# Branching
+
+Branches allow developers to work on features independently.
+
+Create branch:
+
+```bash
+git branch feature-login
+```
+
+Switch branch:
+
+```bash
+git switch feature-login
+```
+
+---
+
+# Git Merge
+
+Merge combines changes from one branch into another.
+
+## Fast Forward Merge
+
+Happens when main branch has no new commits.
+
+## Merge Commit
+
+Happens when both branches have different commits.
+
+---
+
+# Git Rebase
+
+Rebase moves commits on top of another branch.
+
+Command:
+
+```bash
+git rebase master
+```
+
+Used for cleaner commit history.
+
+---
+
+# Git Stash
+
+Stash temporarily stores unfinished changes.
+
+Commands:
+
+```bash
+git stash
+```
+
+Restore changes:
+
+```bash
+git stash pop
+```
+
+---
+
+# Git Cherry Pick
+
+Cherry-pick applies a specific commit from another branch.
+
+Example:
+
+```bash
+git cherry-pick <commit-id>
+```
+
+---
+
+# Git Reset vs Revert
+
+## Reset
+
+Used mainly for local changes.
+
+Types:
+
+```bash
+git reset --soft
+git reset --mixed
+git reset --hard
+```
+
+## Revert
+
+Creates a new commit to undo changes.
+
+```bash
+git revert <commit-id>
+```
+
+Safe for shared branches.
+
+---
+
+# GitHub CLI Revision
+
+GitHub CLI allows managing GitHub from the terminal.
+
+Check version:
+
+```bash
+gh --version
+```
+
+Login:
+
+```bash
+gh auth login
+```
+
+Create repository:
+
+```bash
+gh repo create
+```
+
+Create issue:
+
+```bash
+gh issue create
+```
+
+Create Pull Request:
+
+```bash
+gh pr create
+```
+
+---
+
+# Self Assessment
+
+## Strong Areas:
+
+✅ Linux fundamentals  
+✅ Shell scripting basics  
+✅ Git workflows  
+✅ GitHub operations  
+
+## Need More Practice:
+
+🔄 Advanced networking  
+🔄 Advanced shell scripting concepts  
+🔄 Git reset and revert scenarios  
+
+---
+
+# Key Learning From Revision
+
+The biggest learning from this revision day is:
+
+"Consistent practice and explaining concepts are the best ways to improve technical confidence."
+
+Revision helped me identify gaps, strengthen fundamentals, and understand where I need more hands-on practice.
 
 ---
