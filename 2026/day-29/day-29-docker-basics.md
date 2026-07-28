@@ -155,7 +155,7 @@ docker --version
 Docker version 28.x.x
 ```
 
-![Docker installation verification](day29-01-docker-installation-verification.png)
+![Docker installation verification](Screenshots/day29-01-docker-installation-verification.png)
 
 ### Check Docker Service Status
 
@@ -185,7 +185,7 @@ sudo systemctl is-enabled docker
 enabled
 ```
 
-![Docker service status](day29-02-docker-service-status.png)
+![Docker service status](Screenshots/day29-02-docker-service-status.png)
 
 ### Run Hello World Container
 
@@ -206,7 +206,7 @@ This message shows that your installation appears to be working correctly.
 4. Docker created a container.
 5. Container executed successfully.
 
-![Hello world container](day29-03-hello-world-container.png)
+![Hello world container](Screenshots/day29-03-hello-world-container.png)
 
 ---
 
@@ -257,9 +257,9 @@ http://13.60.99.26:8080
 
 Nginx container was successfully accessed from the browser.
 
-![Nginx browser output](day29-07-nginx-browser-output.png)
-![Nginx browser output 1](day29-07.1-nginx-browser-output.png)
-![Nginx browser output 2](day29-07.2-nginx-browser-output.png)
+![Nginx browser output](Screenshots/day29-07-nginx-browser-output.png)
+![Nginx browser output 1](Screenshots/day29-07.1-nginx-browser-output.png)
+![Nginx browser output 2](Screenshots/day29-07.2-nginx-browser-output.png)
 
 ### Run Ubuntu Interactive Container
 
@@ -309,7 +309,7 @@ hostname
 ```
 Output: `461d240a4ac5`
 
-![Ubuntu container interactive](day29-08-ubuntu-container-interactive.png)
+![Ubuntu container interactive](Screenshots/day29-08-ubuntu-container-interactive.png)
 
 **List running containers**
 ```bash
@@ -345,7 +345,7 @@ docker rm my-nginx
 ```
 Output: `my-nginx`
 
-![Docker container management](day29-09-docker-container-management.png)
+![Docker container management](Screenshots/day29-09-docker-container-management.png)
 
 ---
 
@@ -393,7 +393,7 @@ webserver
 mystifying_chandrasekhar
 ```
 
-![Docker detached mode and custom name](day29-10-docker-detached-custom-name-port-mapping.png)
+![Docker detached mode and custom name](Screenshots/day29-10-docker-detached-custom-name-port-mapping.png)
 
 ### Port Mapping
 
@@ -415,7 +415,7 @@ Output (PORTS column):
 0.0.0.0:8081->80/tcp
 ```
 
-![Docker port mapping](day29-11-docker-port-mapping.png)
+![Docker port mapping](Screenshots/day29-11-docker-port-mapping.png)
 
 ### Check Container Logs
 
@@ -432,7 +432,7 @@ start worker processes
 
 Logs confirmed that Nginx started successfully.
 
-![Docker container logs](day29-12-docker-container-logs.png)
+![Docker container logs](Screenshots/day29-12-docker-container-logs.png)
 
 ### Execute Command Inside Running Container
 
@@ -451,7 +451,7 @@ hostname
 exit
 ```
 
-![Docker exec into container](day29-13-docker-exec-container.png)
+![Docker exec into container](Screenshots/day29-13-docker-exec-container.png)
 
 ---
 
@@ -470,6 +470,8 @@ exit
 
 ---
 
+
+---
 
 ## Key Learnings
 
