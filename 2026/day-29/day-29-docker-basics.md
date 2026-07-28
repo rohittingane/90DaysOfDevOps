@@ -470,22 +470,6 @@ exit
 
 ---
 
-## Screenshots
-
-- `day29-01-docker-installation-verification.png`
-- `day29-02-docker-service-status.png`
-- `day29-03-hello-world-container.png`
-- `day29-07-nginx-browser-output.png`
-- `day29-07.1-nginx-browser-output.png`
-- `day29-07.2-nginx-browser-output.png`
-- `day29-08-ubuntu-container-interactive.png`
-- `day29-09-docker-container-management.png`
-- `day29-10-docker-detached-custom-name-port-mapping.png`
-- `day29-11-docker-port-mapping.png`
-- `day29-12-docker-container-logs.png`
-- `day29-13-docker-exec-container.png`
-
----
 
 ## Key Learnings
 
