@@ -305,7 +305,15 @@ docker create --name lifecycle-test nginx
 
 Status: `Created`
 
-![Create Container](Screenshots/day30-06-create-container.png)
+![Create Container](Screenshots/day30-06-container-create.png)
+
+While experimenting, tried creating a container with a name that was already in use, which produced an error:
+
+```
+docker: Error response from daemon: Conflict. The container name "/lifecycle-test" is already in use
+```
+
+![Container Create Error](Screenshots/day30-06-container-create-error.png)
 
 ## Start Container
 
@@ -315,7 +323,7 @@ docker start lifecycle-test
 
 Status: `Up and Running`
 
-![Start Container](Screenshots/day30-07-start-container.png)
+![Start Container](Screenshots/day30-07-container-start.png)
 
 ## Pause Container
 
@@ -325,7 +333,7 @@ docker pause lifecycle-test
 
 Status: `Up (Paused)`
 
-![Pause Container](Screenshots/day30-08-pause-container.png)
+![Pause Container](Screenshots/day30-08-container-pause.png)
 
 ## Unpause Container
 
@@ -335,7 +343,7 @@ docker unpause lifecycle-test
 
 Status: `Running`
 
-![Unpause Container](Screenshots/day30-09-unpause-container.png)
+![Unpause Container](Screenshots/day30-09-container-unpause.png)
 
 ## Stop Container
 
@@ -345,7 +353,7 @@ docker stop lifecycle-test
 
 Status: `Exited`
 
-![Stop Container](Screenshots/day30-10-stop-container.png)
+![Stop Container](Screenshots/day30-10-container-stop.png)
 
 ## Restart Container
 
@@ -355,7 +363,7 @@ docker restart lifecycle-test
 
 Status: `Running`
 
-![Restart Container](Screenshots/day30-11-restart-container.png)
+![Restart Container](Screenshots/day30-11-container-restart.png)
 
 ## Kill Container
 
@@ -365,7 +373,7 @@ docker kill lifecycle-test
 
 Status: `Exited (137)`
 
-![Kill Container](Screenshots/day30-12-kill-container.png)
+![Kill Container](Screenshots/day30-12-container-kill.png)
 
 ## Remove Container
 
@@ -375,7 +383,7 @@ docker rm lifecycle-test
 
 Container removed successfully.
 
-![Remove Container](Screenshots/day30-13-remove-container.png)
+![Remove Container](Screenshots/day30-13-container-remove.png)
 
 ---
 
@@ -389,7 +397,7 @@ docker run -d --name nginx-running -p 8080:80 nginx
 
 Started nginx container in detached mode.
 
-![Run Nginx Detached](Screenshots/day30-14-run-nginx-detached.png)
+![Run Nginx Detached](Screenshots/day30-14-nginx-detached-container.png)
 
 ## View Container Logs
 
@@ -403,7 +411,7 @@ Logs show:
 - Configuration process
 - Worker processes
 
-![View Logs](Screenshots/day30-15-view-logs.png)
+![View Logs](Screenshots/day30-15-container-logs.png)
 
 ## Follow Real-Time Logs
 
@@ -411,9 +419,7 @@ Logs show:
 docker logs -f nginx-running
 ```
 
-Used follow mode to monitor live logs.
-
-![Follow Logs](Screenshots/day30-16-follow-logs.png)
+Used follow mode to monitor live logs (no separate screenshot for this step — same output pattern as `docker logs`, just streamed live).
 
 ## Execute Command Inside Container
 
@@ -445,7 +451,7 @@ mime.types
 nginx.conf
 ```
 
-![Run Single Command](Screenshots/day30-18-run-single-command.png)
+![Run Single Command](Screenshots/day30-18-exec-single-command.png)
 
 ## Inspect Container
 
@@ -461,7 +467,7 @@ Information found:
 - Mounts
 - Network configuration
 
-![Inspect Container](Screenshots/day30-19-inspect-container.png)
+![Inspect Container](Screenshots/day30-19-container-inspect.png)
 
 ---
 
@@ -475,7 +481,7 @@ docker stop $(docker ps -q)
 
 Stopped all running containers.
 
-![Stop All Containers](Screenshots/day30-20-stop-all-containers.png)
+![Stop All Containers](Screenshots/day30-23-stop-all-running-containers.png)
 
 ## Remove Stopped Containers
 
@@ -485,7 +491,7 @@ docker container prune
 
 Removed unused stopped containers.
 
-![Remove Stopped Containers](Screenshots/day30-21-remove-stopped-containers.png)
+![Remove Stopped Containers](Screenshots/day30-24-remove-stopped-containers.png)
 
 ## Remove Unused Images
 
@@ -499,7 +505,7 @@ Output:
 Total reclaimed space: 169.7MB
 ```
 
-![Remove Unused Images](Screenshots/day30-22-remove-unused-images.png)
+![Remove Unused Images](Screenshots/day30-25-remove-unused-images.png)
 
 ## Check Docker Disk Usage
 
@@ -518,7 +524,7 @@ Build Cache     0B
 
 Docker environment cleaned successfully.
 
-![Docker Disk Usage](Screenshots/day30-23-docker-disk-usage.png)
+![Docker Disk Usage](Screenshots/day30-26-docker-disk-usage.png)
 
 ---
 
