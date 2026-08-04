@@ -88,9 +88,18 @@ SHOW DATABASES;
 MySQL stores its data inside the container at `/var/lib/mysql`. This path lives inside the container's writable layer. When `docker rm` deletes the container, it deletes this layer entirely — along with every byte of data that was written to it. There was no external storage backing it up, so nothing survived.
 
 ### Screenshots
-- `task1-data-created.png` – database, table, and rows created
-- `task1-container-removed.png` – `docker stop` + `docker rm` + `docker ps -a` confirming removal
-- `task1-new-container-data-lost.png` – new container's `SHOW DATABASES` missing `devops`
+
+**Container created:**
+![task1-container-created](./Screenshots/task1-container-created.png)
+
+**Data created (database, table, rows inserted):**
+![task1-data-created](./Screenshots/task1-data-created.png)
+
+**Container stopped and removed:**
+![task1-container-removed](./Screenshots/task1-container-removed.png)
+
+**New container's `SHOW DATABASES` — `devops` is missing (data lost):**
+![task1-new-container-data-lost](./Screenshots/task1-new-container-data-lost.png)
 
 ---
 
@@ -199,12 +208,24 @@ docker volume inspect mysql-data
 This `Mountpoint` is the real, physical location on the host machine where the data actually lives.
 
 ### Screenshots
-- `task2-volume-created.png`
-- `task2-fresh-container-with-volume.png`
-- `task2-database-created.png`
-- `task2-container-removed.png`
-- `task2-data-survived-new-container.png`
-- `task2-volume-inspect.png`
+
+**Volume created:**
+![task2-volume-created](./Screenshots/task2-volume-created.png)
+
+**Fresh container running with volume attached:**
+![task2-fresh-container-with-volume](./Screenshots/task2-fresh-container-with-volume.png)
+
+**Database created inside the volume-backed container:**
+![task2-database-created](./Screenshots/task2-database-created.png)
+
+**Container stopped and removed:**
+![task2-container-removed](./Screenshots/task2-container-removed.png)
+
+**New container, same volume — data survived:**
+![task2-data-survived-new-container](./Screenshots/task2-data-survived-new-container.png)
+
+**Volume inspect output:**
+![task2-volume-inspect](./Screenshots/task2-volume-inspect.png)
 
 ---
 
@@ -260,11 +281,18 @@ Refreshed the browser (`F5`) — **no container restart needed** — and the upd
 | Portability | Easier to back up/move via Docker commands | Tied to the exact host machine's file structure |
 
 ### Screenshots
-- `task3-folder-file-created.png`
-- `task3-nginx-container-running.png`
-- `task3-browser-page-initial.png`
-- `task3-browser-page-fixed.png`
-- `task3-live-edit-updated.png`
+
+**Host folder and `index.html` created:**
+![task3-folder-file-created](./Screenshots/task3-folder-file-created.png)
+
+**Nginx container running with bind mount:**
+![task3-nginx-container-running](./Screenshots/task3-nginx-container-running.png)
+
+**Browser showing the page (initial, before fix):**
+![task3-browser-page-initial](./Screenshots/task3-browser-page-initial.png)
+
+**Browser showing the clean, fixed page:**
+![task3-browser-page-fixed](./Screenshots/task3-browser-page-fixed.png)
 
 ---
 
@@ -340,9 +368,15 @@ PING 172.17.0.2 (172.17.0.2) 56(84) bytes of data.
 | Ping by IP | ✅ Success – 0% packet loss |
 
 ### Screenshots
-- `task4-network-list.png`
-- `task4-bridge-inspect.png`
-- `task4-ping-name-vs-ip.png`
+
+**All Docker networks listed:**
+![task4-network-list](./Screenshots/task4-network-list.png)
+
+**Default bridge network inspected (subnet, gateway, connected containers):**
+![task4-bridge-inspect](./Screenshots/task4-bridge-inspect.png)
+
+**Ping by name (fails) vs ping by IP (succeeds):**
+![task4-ping-name-vs-ip](./Screenshots/task4-ping-name-vs-ip.png)
 
 ---
 
@@ -401,9 +435,15 @@ The default `bridge` network is a legacy network kept for backward compatibility
 This is exactly why real multi-container setups (and tools like `docker-compose`, which auto-creates a custom network per project) always rely on custom networks — so services can reference each other by name in configuration/code without hardcoding IPs that can change.
 
 ### Screenshots
-- `task5-network-created-and-listed.png`
-- `task5-two-containers-running.png`
-- `task5-ping-by-name-success.png`
+
+**Custom network created and listed:**
+![task5-network-created-and-listed](./Screenshots/task5-network-created-and-listed.png)
+
+**Two containers running on the custom network:**
+![task5-two-containers-running](./Screenshots/task5-two-containers-running.png)
+
+**Ping by name — success on custom network:**
+![task5-ping-by-name-success](./Screenshots/task5-ping-by-name-success.png)
 
 ---
 
@@ -466,11 +506,18 @@ PING shop-db (172.19.0.2) 56(84) bytes of data.
 ✅ `shop-app` successfully reached `shop-db` **purely by container name** — no IP hardcoded anywhere. And because `shop-db` uses the `shop-db-data` volume, its data would survive even if the container were removed and recreated (as proven in Task 2).
 
 ### Screenshots
-- `task6-network-and-volume-created.png`
-- `task6-database-container-running.png`
-- `task6-app-container-running.png`
-- `task6-both-containers-running.png`
-- `task6-ping-success-final.png`
+
+**Custom network and volume created:**
+![task6-network-and-volume-created](./Screenshots/task6-network-and-volume-created.png)
+
+**Database container running (network + volume attached):**
+![task6-database-container-running](./Screenshots/task6-database-container-running.png)
+
+**App container running on the same network:**
+![task6-app-container-running](./Screenshots/task6-app-container-running.png)
+
+**Final verification — app reaches database by name:**
+![task6-ping-success-final](./Screenshots/task6-ping-success-final.png)
 
 ---
 
@@ -489,5 +536,3 @@ PING shop-db (172.19.0.2) 56(84) bytes of data.
 - **`mysql -u root -p root`** vs **`mysql -u root -pROOT`** — a space after `-p` makes MySQL treat the next word as a database name, not part of the password flag; the password must be attached directly to `-p` with no space.
 
 ---
-
-
