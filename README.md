@@ -12,7 +12,7 @@ This curiosity motivated me to start my **90 Days of DevOps journey** — a hand
 
 ## 📌 Progress
 
-Currently Completed: **Day 27 / 90** 🚀
+Currently Completed: **Day 33 / 90** 🚀
 
 This repository contains my daily hands-on practice, notes, scripts, and mini-projects while learning DevOps.
 
