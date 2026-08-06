@@ -31,7 +31,9 @@ docker compose version
 
 If this command shows a version number in the output (like `Docker Compose version v2.x.x`), it means the installation is correct.
 
-**Screenshot:** `task-1-compose-install-verify.png`
+**Screenshot:**
+
+![Compose install verify](Screenshots/task-1-compose-install-verify.png)
 
 ---
 
@@ -73,8 +75,10 @@ docker compose up
 Then, typing `localhost:8080` in the browser shows nginx's default welcome page, because port 8080 is connected to the container's port 80.
 
 **Screenshots:**
-- `day-33-task-2-docker-compose-nginx.png`
-- `task-2-nginx-compose-browser-test.png`
+
+![Nginx compose file and up command](Screenshots/day-33-task-2-docker-compose-nginx.png)
+
+![Nginx browser test](Screenshots/task-2-nginx-compose-browser-test.png)
 
 ---
 
@@ -161,12 +165,24 @@ docker compose up
 (again) - starts the services again, and now the previous WordPress data (site title, posts) appears the same as before - because the data was kept safe in the volume.
 
 **Screenshots:**
-- `task-3-docker-compose-file.png` - the YAML file used.
-- `task-3-wordpress-installation-setup.png` - setup screen.
-- `task-3-compose-services-running.png` - both services running.
-- `task-3-compose-restarted-successfully.png` - working after restart.
-- `task-3-volume-preserved-after-down.png` - even after down, the volume's data is still there.
-- `task-3-wordpress-data-persisted.png` - after bringing it up again, the previous WordPress data appeared.
+
+![Docker compose file](Screenshots/task-3-docker-compose-file.png)
+*The YAML file used.*
+
+![WordPress installation setup](Screenshots/task-3-wordpress-installation-setup.png)
+*Setup screen.*
+
+![Compose services running](Screenshots/task-3-compose-services-running.png)
+*Both services running.*
+
+![Compose restarted successfully](Screenshots/task-3-compose-restarted-successfully.png)
+*Working after restart.*
+
+![Volume preserved after down](Screenshots/task-3-volume-preserved-after-down.png)
+*Even after down, the volume's data is still there.*
+
+![WordPress data persisted](Screenshots/task-3-wordpress-data-persisted.png)
+*After bringing it up again, the previous WordPress data appeared.*
 
 ---
 
@@ -225,11 +241,21 @@ docker compose down
 **Meaning:** `down` means "stop the containers, and also delete their network". This is one step further than `stop` - the containers are now removed from the system (but if a volume was defined separately, that volume's data stays safe).
 
 **Screenshots:**
-- `task-4-compose-up-detached-and-ps.png` - up with `-d` and the `ps` output.
-- `task-4-compose-all-logs.png` - all combined logs.
-- `task-4-mysql-logs.png` - only mysql's log.
-- `task-4-wordpress-logs.png` - only wordpress's log.
-- `task-4-compose-stop-down.png` - stop and down commands.
+
+![Compose up detached and ps](Screenshots/task-4-compose-up-detached-and-ps.png)
+*Up with `-d` and the `ps` output.*
+
+![Compose all logs](Screenshots/task-4-compose-all-logs.png)
+*All combined logs.*
+
+![MySQL logs](Screenshots/task-4-mysql-logs.png)
+*Only mysql's log.*
+
+![WordPress logs](Screenshots/task-4-wordpress-logs.png)
+*Only wordpress's log.*
+
+![Compose stop down](Screenshots/task-4-compose-stop-down.png)
+*Stop and down commands.*
 
 ---
 
@@ -280,10 +306,18 @@ docker compose up
 Running this starts all services successfully, using the values from `.env`.
 
 **Screenshots:**
-- `task-5-env-file.png` - content of the `.env` file.
-- `task-5-compose-env-reference.png` - use of `${VARIABLE}` syntax in the compose file.
-- `task-5-compose-config-verification.png` - output of `docker compose config`.
-- `task-5-env-compose-running.png` - proof that the app ran successfully with `.env`.
+
+![Env file](Screenshots/task-5-env-file.png)
+*Content of the `.env` file.*
+
+![Compose env reference](Screenshots/task-5-compose-env-reference.png)
+*Use of `${VARIABLE}` syntax in the compose file.*
+
+![Compose config verification](Screenshots/task-5-compose-config-verification.png)
+*Output of `docker compose config`.*
+
+![Env compose running](Screenshots/task-5-env-compose-running.png)
+*Proof that the app ran successfully with `.env`.*
 
 ---
 
@@ -295,4 +329,4 @@ Running this starts all services successfully, using the values from `.env`.
 4. Used Compose's lifecycle commands (`up -d`, `ps`, `logs`, `stop`, `down`) - practically saw what each command does.
 5. Kept sensitive values separate from the compose file using a `.env` file, linked them using `${VARIABLE}` syntax, and verified using `docker compose config`.
 
-
+Understanding this whole flow means any new person can easily learn the basic to intermediate level usage of Docker Compose.
