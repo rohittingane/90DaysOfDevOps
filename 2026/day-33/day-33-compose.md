@@ -1,4 +1,4 @@
-# Day 33 - Docker Compose (Full Detail, Explained from Basics)
+# Day 33 – Docker Compose: Multi-Container Basics (Full Detail, Explained from Basics)
 
 This document is written so that even someone who knows nothing about Docker Compose can read it and fully understand - what was done today, what was written in which file, and which command was used for what.
 
