@@ -90,10 +90,10 @@ __pycache__
 - Verified with `docker build`, then `docker run -p 5000:5000` — the container started cleanly and (as expected, with no database yet) failed gracefully with `Exception: Could not connect to the database`, proving the retry logic worked correctly.
 
 **Screenshots:**
-- `Screenshots/01-project-folder-structure.png` — final project folder layout
-- `Screenshots/02-dockerignore-and-dockerfile.png` — `.dockerignore` and `Dockerfile` contents
-- `Screenshots/03-docker-build-process.png` — `docker build` in progress
-- `Screenshots/04-build-success-image-and-container-run.png` — successful build, image size, and standalone container run
+- ![01-project-folder-structure.png](Screenshots/01-project-folder-structure.png) — final project folder layout
+- ![02-dockerignore-and-dockerfile.png](Screenshots/02-dockerignore-and-dockerfile.png) — `.dockerignore` and `Dockerfile` contents
+- ![03-docker-build-process.png](Screenshots/03-docker-build-process.png) — `docker build` in progress
+- ![04-build-success-image-and-container-run.png](Screenshots/04-build-success-image-and-container-run.png) — successful build, image size, and standalone container run
 
 ---
 
@@ -169,10 +169,10 @@ networks:
 - Restarted the stack with `docker compose down` (without `-v`) then `docker compose up -d` — the visit counter picked up where it left off instead of resetting to 1, proving the volume correctly persists data across container recreation.
 
 **Screenshots:**
-- `Screenshots/docker-compose-full-file.png` — full `docker-compose.yml` contents
-- `Screenshots/docker-compose-up-build-process.png` — `docker compose up --build` running, pulling Postgres and building the app image
-- `Screenshots/ssh-login-and-app-curl-test.png` — curl tests showing `total_visits` increasing
-- `Screenshots/app-working-in-browser-public-ip.png` — app accessed from a browser via the EC2 public IP
+- ![docker-compose-full-file.png](Screenshots/docker-compose-full-file.png) — full `docker-compose.yml` contents
+- ![docker-compose-up-build-process.png](Screenshots/docker-compose-up-build-process.png) — `docker compose up --build` running, pulling Postgres and building the app image
+- ![ssh-login-and-app-curl-test.png](Screenshots/ssh-login-and-app-curl-test.png) — curl tests showing `total_visits` increasing
+- ![app-working-in-browser-public-ip.png](Screenshots/app-working-in-browser-public-ip.png) — app accessed from a browser via the EC2 public IP
 
 ---
 
@@ -201,8 +201,8 @@ docker pull rtingane2611/flask-postgres-app:latest
 ```
 
 **Screenshots:**
-- `Screenshots/docker-tag-and-push-success.png` — tagging and push process, ending in a successful digest
-- `Screenshots/dockerhub-repo-listing.png` — the repository visible on Docker Hub, marked Public
+- ![docker-tag-and-push-success.png](Screenshots/docker-tag-and-push-success.png) — tagging and push process, ending in a successful digest
+- ![dockerhub-repo-listing.png](Screenshots/dockerhub-repo-listing.png) — the repository visible on Docker Hub, marked Public
 
 ---
 
@@ -254,8 +254,8 @@ Prove that the shipped image is genuinely self-contained — that someone with o
 - Both containers came up healthy and connected correctly with zero local source code or Dockerfile involved in the `app` container's creation — only the Docker Hub image and the compose file were needed.
 
 **Screenshots:**
-- `Screenshots/fresh-test-cleanup-images-deleted.png` — all local images being deleted, confirmed empty
-- `Screenshots/fresh-pull-test-success-total-visits-11.png` — full fresh pull, healthy containers, and `total_visits: 11` proving both a clean pull and data persistence
+- ![fresh-test-cleanup-images-deleted.png](Screenshots/fresh-test-cleanup-images-deleted.png) — all local images being deleted, confirmed empty
+- ![fresh-pull-test-success-total-visits-11.png](Screenshots/fresh-pull-test-success-total-visits-11.png) — full fresh pull, healthy containers, and `total_visits: 11` proving both a clean pull and data persistence
 
 ---
 
