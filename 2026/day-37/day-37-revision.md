@@ -114,6 +114,32 @@ docker build -t dockerfile-practice .
 
 ---
 
+## Explaining Image Layers and How Caching Works
+
+### What is a "layer"?
+
+Every single instruction in a Dockerfile (`FROM`, `WORKDIR`, `COPY`, `RUN`, etc.) creates a **layer** — a small, saved snapshot of the filesystem at that point. An image is really just a **stack of these layers**, placed one on top of another. When a container runs, Docker adds one more thin, writable layer on top of the whole stack for that container's own temporary changes.
+
+Think of it like a layered cake, or like a stack of transparent sheets: each sheet only records *what changed* compared to the sheet below it. The final image is what you see when you look through all the sheets stacked together.
+
+### Why this matters — reusing layers between images
+
+If two different images both start with `FROM python:3.12-slim`, Docker does **not** download or store that base layer twice — it's reused. This is why, in our builds, later images downloaded much faster ("Already exists" instead of "Pulling") once the base image had been pulled once before.
+
+### How caching speeds up builds
+
+Every time you run `docker build`, Docker checks each instruction one by one, top to bottom. For each one, it asks: *"Have I built this exact instruction, on top of this exact previous layer, before?"* If yes, it reuses ("caches") the old result instead of redoing the work — you'll see `---> Using cache` in the build output.
+
+The moment **one** instruction changes (or the files it copies change), Docker rebuilds that layer **and every layer after it** — the cache is only valid up to the point of the first change. This is exactly why we always put `COPY requirements.txt .` and `RUN pip install ...` *before* `COPY . .` in our Dockerfile: application code changes constantly, but dependencies rarely change. By copying dependencies first, that slow `pip install` step stays cached across almost every rebuild, and only the fast final `COPY . .` step re-runs when we edit code.
+
+**We saw this directly** in our multi-stage build screenshot — Steps 2, 3, and 4 (`WORKDIR`, `COPY requirements.txt`, `RUN pip install`) all showed `Using cache`, because nothing about them had changed since the previous build; only the final `COPY . .` step (which had new code) actually re-ran.
+
+### Real-world impact
+
+On a real project with many dependencies, this caching behavior can turn a 5-minute rebuild into a 5-second rebuild for a one-line code change — which is a huge deal when you're rebuilding images constantly during development or in a CI/CD pipeline.
+
+---
+
 ## Task 4: CMD vs ENTRYPOINT
 
 This is one of the most confusing Docker concepts for beginners, so here's a simple analogy first.
@@ -331,9 +357,52 @@ Visiting `http://<ec2-ip>:8080` in a browser showed the default Nginx welcome pa
 
 ## Task 10: Environment Variables and `.env` Files in Compose
 
-**Who provides what?** A developer's code decides the *names* of environment variables it needs (e.g., `os.environ.get("DB_PASSWORD")` in Python) — that part is fixed and can't be changed without editing the code. But the **actual values** (the real password, the real hostname) are provided separately, usually via a `.env` file, and this is typically the DevOps/deployment person's responsibility — not the developer's.
+### What problem this solves
 
-Why separate them? Because the same code needs different values in different situations (a different password for local testing vs. production), and secret values should never be hardcoded into source code that gets pushed to GitHub. A `.env.example` file (with just variable names, no real values) is what usually gets committed to version control; the real `.env` file with actual secrets is created locally by whoever is deploying, and is excluded from git via `.gitignore`.
+Application code often needs configuration values that shouldn't be hardcoded — passwords, hostnames, API keys, database names. Hardcoding a password directly into a Dockerfile or into `docker-compose.yml` is risky (it can accidentally get pushed to a public GitHub repo) and inflexible (the same image can't easily be reused for different environments). Environment variables solve this by letting these values be **injected from outside** at the time the container starts, instead of being baked into the image itself.
+
+### Who provides what
+
+A developer's code decides the *names* of environment variables it needs (e.g., `os.environ.get("DB_PASSWORD")` in Python) — that part is fixed and can't be changed without editing the code. But the **actual values** (the real password, the real hostname) are provided separately, usually via a `.env` file, and this is typically the DevOps/deployment person's responsibility — not the developer's. Why separate them? Because the same code needs different values in different situations (a different password for local testing vs. production).
+
+### How to actually use it in Compose — step by step
+
+**Step 1 — Create a `.env` file** in the same folder as your `docker-compose.yml`:
+```
+POSTGRES_DB=appdb
+POSTGRES_USER=appuser
+POSTGRES_PASSWORD=apppass123
+```
+This is a plain text file: one `KEY=value` pair per line, no quotes, no spaces around the `=`.
+
+**Step 2 — Reference those values inside `docker-compose.yml`** using `${VARIABLE_NAME}` syntax:
+```yaml
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+```
+When you run `docker compose up`, Compose automatically reads the `.env` file in the background and substitutes each `${...}` with the matching value from it — you never have to load it manually.
+
+**Step 3 — Different services can reference the same `.env` values under different variable names.** For example, our Flask app's code expects `DB_NAME`, `DB_USER`, `DB_PASSWORD` (different names than Postgres's own `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD`), but both point to the exact same underlying `.env` values:
+```yaml
+app:
+  environment:
+    DB_HOST: db
+    DB_NAME: ${POSTGRES_DB}
+    DB_USER: ${POSTGRES_USER}
+    DB_PASSWORD: ${POSTGRES_PASSWORD}
+```
+This guarantees both containers always agree on the same credentials, even though their code expects different variable names.
+
+**Step 4 — Keep `.env` out of version control.** Add `.env` to `.gitignore` so real secrets never get committed. Instead, commit a `.env.example` file with the same variable names but placeholder/empty values, so anyone cloning the project knows what to fill in themselves.
+
+### Why this matters in the real world
+
+This exact pattern is what let us run our Day 36 project on a fresh EC2 instance with a completely clean Docker install — the compose file didn't need to be touched at all, only a new `.env` file had to be created locally with the right secrets, and everything worked identically.
 
 ---
 
@@ -434,6 +503,45 @@ web_server    Up 15 seconds
 
 ![compose-healthcheck-depends-on-full-file](Screenshots/compose-healthcheck-depends-on-full-file.png)
 ![compose-healthcheck-startup-order-proof](Screenshots/compose-healthcheck-startup-order-proof.png)
+
+---
+
+## Quick-Fire Questions
+
+### 1. What is the difference between an image and a container?
+
+An **image** is a read-only template — a saved set of layered instructions (like a recipe). A **container** is a running (or stopped) instance created *from* an image — like an actual dish cooked from that recipe. One image can be used to create many independent containers at the same time, and changes made inside a container don't affect the image it came from.
+
+### 2. What happens to data inside a container when you remove it?
+
+By default, all data disappears permanently. Anything written inside a container's own filesystem only exists in that container's temporary writable layer — once the container is deleted (`docker rm`), that layer is gone forever. The only way to keep data beyond a container's lifetime is to explicitly store it in a **volume** or a **bind mount**, both of which live outside the container itself, on the host.
+
+### 3. How do two containers on the same custom network communicate?
+
+Docker runs an internal DNS service for every custom network. Each container's **name** automatically becomes resolvable as a hostname to every other container on that same network — so `container1` can reach `container2` simply by using the name `container2`, and Docker translates it to the correct internal IP address behind the scenes. This does **not** work automatically on Docker's default network, which is why creating a custom network matters.
+
+### 4. What does `docker compose down -v` do differently from `docker compose down`?
+
+`docker compose down` stops and removes the containers and the network, but leaves named volumes untouched — so any persisted data (like database records) survives. `docker compose down -v` does all of that **plus deletes the named volumes**, permanently wiping any data stored in them. `-v` should be used carefully — it's the difference between "just stopping the app" and "completely wiping its data."
+
+### 5. Why are multi-stage builds useful?
+
+They let you separate the tools needed to *build* an application (compilers, dev headers, temporary files) from what's actually needed to *run* it. The build stage can be as large and messy as needed, but only the specific files you explicitly copy out (using `COPY --from=builder`) make it into the final image. This produces smaller, cleaner, more secure production images, since leftover build tools are never shipped.
+
+### 6. What is the difference between `COPY` and `ADD`?
+
+Both copy files from the host into the image, but `ADD` has extra "magic" behavior: it can automatically extract compressed archives (like `.tar.gz` files) into the destination folder, and it can fetch files directly from a URL. `COPY` does neither of those things — it only does a plain, predictable file copy. Because `ADD`'s extra behavior can cause unexpected results, the general best practice is to always prefer `COPY` unless you specifically need `ADD`'s archive-extraction feature.
+
+### 7. What does `-p 8080:80` mean?
+
+It maps a port on the host machine to a port inside the container, in the format `host-port:container-port`. Here, requests arriving at port `8080` on the host machine get forwarded to port `80` inside the container. This is necessary because a container's internal ports are not reachable from outside by default — the container is isolated until you explicitly publish a port this way.
+
+### 8. How do you check how much disk space Docker is using?
+
+```bash
+docker system df
+```
+This shows a summary of space used by images, containers, volumes, and the build cache, including how much of it is "reclaimable" (unused and safe to delete). To actually free up that space, commands like `docker system prune`, `docker image prune`, or `docker volume prune` can be used to remove unused resources.
 
 ---
 
