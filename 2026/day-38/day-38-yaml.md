@@ -89,14 +89,14 @@ hobbies: [cricket, music, travelling]
 
 **Validation:**
 
-![Task 1 - YAML basic structure](2026/day-38/Screenshots/task-1-yaml-basic-structure.png)
+![Task 1 - YAML basic structure](Screenshots/task-1-yaml-basic-structure.png)
 
-![Task 2 - YAML lists validation](2026/day-38/Screenshots/task-2-yaml-lists-validation.png)
+![Task 2 - YAML lists validation](Screenshots/task-2-yaml-lists-validation.png)
 
 I also hit a validation error along the way (used wrong key name / wrong
 boolean case) and had to go back and fix it:
 
-![Task 5 - person.yaml validation error and fix](2026/day-38/Screenshots/task-5-person-yaml-validation-error-fix.png)
+![Task 5 - person.yaml validation error and fix](Screenshots/task-5-person-yaml-validation-error-fix.png)
 
 ---
 
@@ -147,9 +147,9 @@ important real-world lesson: **tab-related YAML errors often don't say
 
 **Validation:**
 
-![Task 3 - Nested objects validation](2026/day-38/Screenshots/task-3-nested-objects-validation.png)
+![Task 3 - Nested objects validation](Screenshots/task-3-nested-objects-validation.png)
 
-![Task 5 - server.yaml validation error and fix](2026/day-38/Screenshots/task-5-server-yaml-validation-error-fix.png)
+![Task 5 - server.yaml validation error and fix](Screenshots/task-5-server-yaml-validation-error-fix.png)
 
 ---
 
@@ -189,7 +189,7 @@ startup_script_fold: >
 
 **Validation:**
 
-![Task 4 - Multi-line strings validation](2026/day-38/Screenshots/task-4-multi-line-strings-validation.png)
+![Task 4 - Multi-line strings validation](Screenshots/task-4-multi-line-strings-validation.png)
 
 ---
 
