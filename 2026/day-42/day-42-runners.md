@@ -229,28 +229,16 @@ This confirmed that runner labels can be used to target a specific type of self-
 
 ---
 
-# Task 6 – GitHub-Hosted vs Self-Hosted
+## Task 6: GitHub-Hosted vs Self-Hosted
 
-Task 6 focused on comparing GitHub-hosted and self-hosted runners.
+| **Feature** | **GitHub-Hosted** | **Self-Hosted** |
+|---|---|---|
+| **Who manages it?** | GitHub manages the runner infrastructure | We manage the runner machine and infrastructure |
+| **Cost** | Uses GitHub Actions usage/quota | We pay for and manage our own server/infrastructure |
+| **Pre-installed tools** | Many commonly used tools are pre-installed | We install and manage the tools we need |
+| **Good for** | General CI/CD, testing, and quick workflows | Custom environments, private infrastructure, and special requirements |
+| **Security concern** | GitHub manages the hosted environment | We are responsible for securing and maintaining the runner |
 
-No additional screenshot was required because the comparison was documented using the table and explanation above.
-
-The key difference is:
-
-```text
-GitHub-Hosted Runner
-        |
-        v
-GitHub manages the machine
-```
-
-while:
-
-```text
-Self-Hosted Runner
-        |
-        v
-We manage the machine
 ```
 
 ---
