@@ -71,6 +71,15 @@ I checked the Actions tab and the workflow graph showed a clear linear
 chain: `build → test → deploy`, with each job only starting after the
 previous one turned green.
 
+**YAML file (after fixing indentation errors):**
+![multi-job yaml fixed](Screenshots/day43-multi-job-yaml-fixed.png)
+
+**Workflow run history (showing earlier failures and the final success):**
+![multi-job workflow runs](Screenshots/day43-workflow-runs-history.png)
+
+**Dependency graph (build → test → deploy):**
+![multi-job dependency graph](Screenshots/day43-multi-job-dependency-graph.png)
+
 ---
 
 ## Task 2: Environment Variables
@@ -151,6 +160,18 @@ Version: 1.0.0
 Commit SHA: 2684bb26d68710eda1b89f17151a657adc58c342
 Triggered by: rohittingane
 ```
+
+**YAML file:**
+![env-vars yaml file](Screenshots/day43-env-vars-yaml-file.png)
+
+**Workflow run (success):**
+![env-vars workflow run](Screenshots/day43-env-vars-workflow-run.png)
+
+**Job summary:**
+![env-vars job summary](Screenshots/day43-env-vars-job-summary.png)
+
+**Logs showing all three env var levels plus GitHub context values:**
+![env-vars logs output](Screenshots/day43-env-vars-logs-output.png)
 
 ---
 
@@ -233,6 +254,18 @@ Date from set-date job - Thu Aug 27 20:11:08 UTC 2026
 ```
 This confirms the value travelled successfully from `set-date` to
 `use-date`.
+
+**Final corrected YAML file:**
+![job-outputs yaml final](Screenshots/day43-job-outputs-yaml-final.png)
+
+**Workflow run history (earlier failure, then success):**
+![job-outputs workflow runs](Screenshots/day43-job-outputs-workflow-runs.png)
+
+**Dependency graph (set-date → use-date):**
+![job-outputs dependency graph](Screenshots/day43-job-outputs-dependency-graph.png)
+
+**Final logs showing the passed date value:**
+![job-outputs logs final](Screenshots/day43-job-outputs-logs-final.png)
 
 ---
 
@@ -329,6 +362,15 @@ and keep going." It's useful for optional or non-critical steps, like an
 experimental test suite, where you don't want one flaky check to block an
 entire deployment.
 
+**YAML file:**
+![conditionals yaml file](Screenshots/day43-conditionals-yaml-file.png)
+
+**Job succeeding overall despite an internal failed step (continue-on-error in action):**
+![conditionals success with continue-on-error](Screenshots/day43-conditionals-success-with-continue-on-error.png)
+
+**Detailed step logs (showing the skipped `failure()` step):**
+![conditionals detailed logs](Screenshots/day43-conditionals-detailed-logs.png)
+
 ---
 
 ## Task 5: Putting It Together — Smart Pipeline
@@ -403,6 +445,18 @@ in parallel), connected into `summary` afterward. The `summary` logs
 correctly printed "Main branch push" (since the push was to `main`), the
 "Feature branch push" step was correctly skipped, and the commit message
 was printed accurately.
+
+**YAML file (draft, before final formatting):**
+![smart-pipeline yaml draft](Screenshots/day43-smart-pipeline-yaml-draft.png)
+
+**Workflow run (success):**
+![smart-pipeline workflow success](Screenshots/day43-smart-pipeline-workflow-success.png)
+
+**Parallel jobs graph (lint + test → summary):**
+![smart-pipeline parallel graph](Screenshots/day43-smart-pipeline-parallel-graph.png)
+
+**Summary job logs:**
+![smart-pipeline summary logs](Screenshots/day43-smart-pipeline-summary-logs.png)
 
 ---
 
