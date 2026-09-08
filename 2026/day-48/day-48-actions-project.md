@@ -96,6 +96,35 @@ flask==3.0.3
 
 Basic file describing what the project is, its endpoint, and its tech stack. This is the first thing anyone sees when they open the repo on GitHub.
 
+### Status Badges (Task 7)
+
+At the top of `README.md`, we added five status badges — small images that show whether each workflow's last run passed or failed, without anyone needing to open the Actions tab:
+
+```markdown
+![PR Pipeline](https://github.com/rohittingane/github-actions-capstone/actions/workflows/pr-pipeline.yml/badge.svg)
+![Main Pipeline](https://github.com/rohittingane/github-actions-capstone/actions/workflows/main-pipeline.yml/badge.svg)
+![Reusable Build and Test](https://github.com/rohittingane/github-actions-capstone/actions/workflows/reusable-build-test.yml/badge.svg)
+![Reusable Docker Build and Push](https://github.com/rohittingane/github-actions-capstone/actions/workflows/reusable-docker.yml/badge.svg)
+![Scheduled Health Check](https://github.com/rohittingane/github-actions-capstone/actions/workflows/health-check.yml/badge.svg)
+```
+
+**Word by word explanation:**
+
+- `![...]` — Standard Markdown syntax for embedding an image. The text inside `[...]` is the alt-text (shown if the image fails to load).
+- `https://github.com/rohittingane/github-actions-capstone/actions/workflows/pr-pipeline.yml/badge.svg` — GitHub automatically generates a small SVG image at this exact URL for every workflow file in the repo. The image is always up to date — it reflects the status of that workflow's most recent run.
+- `/badge.svg` — The special path GitHub reserves for these auto-generated status images.
+
+**Result:**
+
+![README Badges and Deployments](./Screenshots/readme-badges-and-deployments.png)
+*Three badges show "passing" (PR Pipeline, Main Pipeline, Scheduled Health Check). Two show "no status."*
+
+**Why two badges show "no status" instead of passing/failing:**
+
+`reusable-build-test.yml` and `reusable-docker.yml` are **reusable workflows** — they only have `on: workflow_call` as their trigger, with no `on: push` or `on: pull_request` of their own. GitHub's badge system looks for a direct, standalone run history for that specific workflow file. But reusable workflows never run standalone — they only ever run as a job *inside* another workflow (`pr-pipeline.yml` or `main-pipeline.yml`). So GitHub has no independent run history to generate a pass/fail badge for them, even though they succeed every time they're called. This is expected, normal behavior, not a bug.
+
+We also noticed GitHub automatically tracks our `environment: production` deploy job under the repo's **Deployments** section, showing a green checkmark next to "production" — extra confirmation that the deploy job ran successfully.
+
 ---
 
 ## 3. `Dockerfile` (Built by DevOps team)
@@ -695,3 +724,4 @@ Tags pushed: `latest`, `sha-<commit-hash>` (a new SHA tag is created on every pu
 | PR Pipeline | `pr-pipeline.yml` | Done, tested via real PR |
 | Main Pipeline | `main-pipeline.yml` | Done, tested, deployed to EC2 |
 | Scheduled Health Check | `health-check.yml` | Done, tested via manual + automatic run |
+| Badges & Documentation | `README.md`, `day-48-actions-project.md` | Done |
