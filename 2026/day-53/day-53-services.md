@@ -69,7 +69,7 @@ kubectl get pods -o wide
 
 **Screenshot:**
 
-![Deployment and Pods Running](2026/day-53/Screenshots/day53-1-deployment-pods-running.png)
+![Deployment and Pods Running](Screenshots/day53-1-deployment-pods-running.png)
 
 ---
 
@@ -144,9 +144,9 @@ exit
 
 **Screenshots:**
 
-![ClusterIP YAML Explained](2026/day-53/Screenshots/day53-3-clusterip-service-yaml-explained.png)
-![ClusterIP wget Success](2026/day-53/Screenshots/day53-4-clusterip-wget-success.png)
-![ClusterIP DNS Test and Exit](2026/day-53/Screenshots/day53-5-clusterip-dns-test-exit.png)
+![ClusterIP YAML Explained](Screenshots/day53-3-clusterip-service-yaml-explained.png)
+![ClusterIP wget Success](Screenshots/day53-4-clusterip-wget-success.png)
+![ClusterIP DNS Test and Exit](Screenshots/day53-5-clusterip-dns-test-exit.png)
 
 ---
 
@@ -194,9 +194,9 @@ exit
 
 **Screenshots:**
 
-![DNS Short Name Test](2026/day-53/Screenshots/day53-6-dns-shortname-test.png)
-![DNS Full Name Test](2026/day-53/Screenshots/day53-7-dns-fullname-test.png)
-![nslookup DNS Match](2026/day-53/Screenshots/day53-8-nslookup-dns-match.png)
+![DNS Short Name Test](Screenshots/day53-6-dns-shortname-test.png)
+![DNS Full Name Test](Screenshots/day53-7-dns-fullname-test.png)
+![nslookup DNS Match](Screenshots/day53-8-nslookup-dns-match.png)
 
 ---
 
@@ -247,8 +247,8 @@ curl http://172.18.0.2:30080
 
 **Screenshots:**
 
-![NodePort Service Created](2026/day-53/Screenshots/day53-9-nodeport-svc-created.png)
-![NodePort curl Success](2026/day-53/Screenshots/day53-10-nodeport-curl-success.png)
+![NodePort Service Created](Screenshots/day53-9-nodeport-svc-created.png)
+![NodePort curl Success](Screenshots/day53-10-nodeport-curl-success.png)
 
 ---
 
@@ -292,7 +292,7 @@ My cluster is a **kind** (Kubernetes in Docker) cluster running on an AWS EC2 in
 
 **Screenshot:**
 
-![LoadBalancer YAML and get services](2026/day-53/Screenshots/day53-12-loadbalancer-yaml-and-get-services.png)
+![LoadBalancer YAML and get services](Screenshots/day53-12-loadbalancer-yaml-and-get-services.png)
 
 ---
 
@@ -336,7 +336,7 @@ This confirms that even though I only asked for a `LoadBalancer`, Kubernetes aut
 
 **Screenshot:**
 
-![Describe LoadBalancer Layers](2026/day-53/Screenshots/day53-13-describe-loadbalancer-layers.png)
+![Describe LoadBalancer Layers](Screenshots/day53-13-describe-loadbalancer-layers.png)
 
 ---
 
@@ -371,7 +371,7 @@ This confirms the cleanup was successful.
 
 **Screenshot:**
 
-![Cleanup Verified](2026/day-53/Screenshots/day53-14-cleanup-verified.png)
+![Cleanup Verified](Screenshots/day53-14-cleanup-verified.png)
 
 ---
 
