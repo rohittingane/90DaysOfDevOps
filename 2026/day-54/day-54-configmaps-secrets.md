@@ -85,8 +85,8 @@ data:
 **The important observation:** every value under `data:` is fully readable plain text. `production`, `false`, `8080` — nothing is hidden, nothing is scrambled. This is intentional: ConfigMaps are **not** meant for secrets. Anyone who can view this YAML sees everything immediately. This is the core contrast you should remember going into the Secret sections later.
 
 **Screenshot:**
-![ConfigMap create](2026/day-54/Screenshots/day54-configmap-create.png)
-![ConfigMap describe and YAML](2026/day-54/Screenshots/day54-configmap-describe-yaml.png)
+![ConfigMap create](Screenshots/day54-configmap-create.png)
+![ConfigMap describe and YAML](Screenshots/day54-configmap-describe-yaml.png)
 
 ---
 
@@ -131,8 +131,8 @@ data:
 **Why choose `--from-file` over `--from-literal`?** Whenever your config already exists as a file, or when you have too many settings to type by hand, `--from-file` saves time and reduces typos.
 
 **Screenshot:**
-![ConfigMap from file - create](2026/day-54/Screenshots/day54-configmap-file-create.png)
-![ConfigMap from file - YAML](2026/day-54/Screenshots/day54-configmap-file-yaml.png)
+![ConfigMap from file - create](Screenshots/day54-configmap-file-create.png)
+![ConfigMap from file - YAML](Screenshots/day54-configmap-file-yaml.png)
 
 ---
 
@@ -192,7 +192,7 @@ kubectl logs app-envfrom
 **What this proves:** the application inside the container never needed any special Kubernetes-aware code. It just sees normal environment variables — Kubernetes did the wiring behind the scenes.
 
 **Screenshot:**
-![Pod using envFrom](2026/day-54/Screenshots/day54-pod-envfrom.png)
+![Pod using envFrom](Screenshots/day54-pod-envfrom.png)
 
 ---
 
@@ -236,7 +236,7 @@ kubectl get secret db-credentials -o jsonpath='{.data.DB_PASSWORD}' | base64 --d
 **The real lesson of this task:** if someone has permission to run `kubectl get secret`, they can trivially recover the plaintext password in seconds. The actual protection Kubernetes gives you comes from **RBAC** (Role-Based Access Control) — i.e., controlling *who is even allowed* to read Secrets in the first place — not from the base64 encoding itself. Never think of base64 as "encryption."
 
 **Screenshot:**
-![Secret create and decode](2026/day-54/Screenshots/day54-secret-create-decode.png)
+![Secret create and decode](Screenshots/day54-secret-create-decode.png)
 
 ---
 
@@ -295,8 +295,8 @@ DB_PASSWORD=SuperSecret123
 **What this proves:** Kubernetes automatically **decoded** the base64 value before injecting it as an environment variable. The application inside the container just sees a normal plain-text variable — it never has to know or care that the value was stored as base64 in etcd (Kubernetes' backing datastore).
 
 **Screenshot:**
-![Pod with Secret manifest](2026/day-54/Screenshots/day54-pod-secret-manifest.png)
-![Pod with Secret - verified output](2026/day-54/Screenshots/day54-pod-secret-verify.png)
+![Pod with Secret manifest](Screenshots/day54-pod-secret-manifest.png)
+![Pod with Secret - verified output](Screenshots/day54-pod-secret-verify.png)
 
 ---
 
@@ -381,10 +381,10 @@ Check the `AGE` and `RESTARTS` columns — `RESTARTS` should still be `0`, provi
 | Volume mount (`volumes` + `volumeMounts`) | ✅ Yes — auto-syncs into files, usually within ~60 seconds | Config that needs to change without redeploying the app |
 
 **Screenshot:**
-![Live config Pod manifest](2026/day-54/Screenshots/day54-live-config-manifest.png)
-![Patching the ConfigMap live](2026/day-54/Screenshots/day54-live-config-patch.png)
-![File updated to "world" without restart](2026/day-54/Screenshots/day54-live-config-world.png)
-![nginx Pod healthy with mounted volume](2026/day-54/Screenshots/day54-pod-nginx-volume-health.png)
+![Live config Pod manifest](Screenshots/day54-live-config-manifest.png)
+![Patching the ConfigMap live](Screenshots/day54-live-config-patch.png)
+![File updated to "world" without restart](Screenshots/day54-live-config-world.png)
+![nginx Pod healthy with mounted volume](Screenshots/day54-pod-nginx-volume-health.png)
 
 ---
 
@@ -419,7 +419,7 @@ kubectl get secret
 - `kubectl get configmap` → shows only `kube-root-ca.crt`. **This is normal and expected** — Kubernetes automatically creates this one specific ConfigMap in every namespace by default (it holds a certificate used for secure communication within the cluster). You never created it, and you should never delete it. Seeing *only* this one confirms every ConfigMap **you** made (`app-config`, `file-config`, `live-config`) was successfully deleted.
 
 **Screenshot:**
-![Cleanup verified](2026/day-54/Screenshots/day54-cleanup-verify.png)
+![Cleanup verified](Screenshots/day54-cleanup-verify.png)
 
 ---
 
