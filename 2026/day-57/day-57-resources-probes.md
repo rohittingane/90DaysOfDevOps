@@ -124,9 +124,12 @@ kubectl describe pod resource-demo-pod
 **Why Burstable?** Because requests and limits are both set, but they are **not equal** to each other.
 
 ### Screenshots
-- `Screenshots/task1-1-pod-manifest-apply.png` – manifest file created and applied
-- `Screenshots/task1-2-describe-limits-requests.png` – describe output showing Limits/Requests
-- `Screenshots/task1-3-describe-qos-burstable.png` – describe output showing `QoS Class: Burstable`
+![manifest file created and applied](Screenshots/task1-1-pod-manifest-apply.png)
+*manifest file created and applied*
+![describe output showing Limits/Requests](Screenshots/task1-2-describe-limits-requests.png)
+*describe output showing Limits/Requests*
+![describe output showing `QoS Class: Burstable`](Screenshots/task1-3-describe-qos-burstable.png)
+*describe output showing `QoS Class: Burstable`*
 
 ### ✅ Verify
 **Question:** What QoS class does your Pod have?
@@ -190,10 +193,14 @@ Warning  BackOff  kubelet  Back-off restarting failed container
 This means Kubernetes tried restarting the container, it got OOMKilled again (because the command never changes), and Kubernetes started slowing down its retries — this is the beginning of `CrashLoopBackOff`.
 
 ### Screenshots
-- `Screenshots/task2-1-oom-manifest-apply.png` – manifest created and applied
-- `Screenshots/task2-2-describe-terminated.png` – describe output, container state
-- `Screenshots/task2-3-describe-oomkilled-137.png` – Reason: OOMKilled, Exit Code: 137
-- `Screenshots/task2-4-describe-events-backoff.png` – QoS class + BackOff event
+![manifest created and applied](Screenshots/task2-1-oom-manifest-apply.png)
+*manifest created and applied*
+![describe output, container state](Screenshots/task2-2-describe-terminated.png)
+*describe output, container state*
+![Reason: OOMKilled, Exit Code: 137](Screenshots/task2-3-describe-oomkilled-137.png)
+*Reason: OOMKilled, Exit Code: 137*
+![QoS class + BackOff event](Screenshots/task2-4-describe-events-backoff.png)
+*QoS class + BackOff event*
 
 ### ✅ Verify
 **Question:** What exit code does an OOMKilled container have?
@@ -268,9 +275,12 @@ You'll also notice:
 - `PodScheduled: False` → confirms scheduling never succeeded
 
 ### Screenshots
-- `Screenshots/task3-1-pending-manifest-status.png` – manifest, apply, and Pending status
-- `Screenshots/task3-2-describe-podscheduled-false.png` – describe output, Node: none
-- `Screenshots/task3-3-describe-failedscheduling-event.png` – the FailedScheduling event message
+![manifest, apply, and Pending status](Screenshots/task3-1-pending-manifest-status.png)
+*manifest, apply, and Pending status*
+![describe output, Node: none](Screenshots/task3-2-describe-podscheduled-false.png)
+*describe output, Node: none*
+![the FailedScheduling event message](Screenshots/task3-3-describe-failedscheduling-event.png)
+*the FailedScheduling event message*
 
 ### ✅ Verify
 **Question:** What event message does the scheduler produce?
@@ -347,8 +357,10 @@ Once you see `RESTARTS` go from `0` to `1`, press `Ctrl + C` to stop watching.
 **Note:** This cycle repeats forever if you leave the Pod running — every ~45 seconds it will restart again, because the same startup command runs each time.
 
 ### Screenshots
-- `Screenshots/task4-1-liveness-manifest.png` – manifest with livenessProbe config
-- `Screenshots/task4-2-liveness-restart-count.png` – watch output showing RESTARTS: 0 → 1
+![manifest with livenessProbe config](Screenshots/task4-1-liveness-manifest.png)
+*manifest with livenessProbe config*
+![watch output showing RESTARTS: 0 → 1](Screenshots/task4-2-liveness-restart-count.png)
+*watch output showing RESTARTS: 0 → 1*
 
 ### ✅ Verify
 **Question:** How many times has the container restarted?
@@ -452,8 +464,10 @@ readiness-svc               4m6s
 The `ENDPOINTS` column is now **empty** — the Service has removed this Pod from its list of targets, because it's not ready to serve traffic. No traffic will be routed to it until it becomes ready again.
 
 ### Screenshots
-- `Screenshots/task5-1-readiness-manifest.png` – manifest with readinessProbe config
-- `Screenshots/task5-2-readiness-endpoints-notrestarted.png` – full flow: expose, endpoints, break probe, empty endpoints, RESTARTS still 0
+![manifest with readinessProbe config](Screenshots/task5-1-readiness-manifest.png)
+*manifest with readinessProbe config*
+![full flow: expose, endpoints, break probe, empty endpoints, RESTARTS still 0](Screenshots/task5-2-readiness-endpoints-notrestarted.png)
+*full flow: expose, endpoints, break probe, empty endpoints, RESTARTS still 0*
 
 ### ✅ Verify
 **Question:** When readiness failed, was the container restarted?
@@ -532,7 +546,8 @@ startup-demo-pod   1/1     Running   0          26s
 Press `Ctrl + C` once you see `1/1`.
 
 ### Screenshots
-- `Screenshots/task6-1-startup-probe-ready.png` – full flow from apply to `0/1 → 1/1`, RESTARTS staying at 0
+![full flow from apply to `0/1 → 1/1`, RESTARTS staying at 0](Screenshots/task6-1-startup-probe-ready.png)
+*full flow from apply to `0/1 → 1/1`, RESTARTS staying at 0*
 
 ### ✅ Verify
 **Question:** What would happen if `failureThreshold` were 2 instead of 12?
@@ -582,7 +597,8 @@ kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   10d
 - `get svc` only shows the default `kubernetes` Service that every cluster has built-in → your `readiness-svc` is gone
 
 ### Screenshots
-- `Screenshots/task7-1-cleanup-all-deleted.png` – full cleanup flow, confirming No resources found
+![full cleanup flow, confirming No resources found](Screenshots/task7-1-cleanup-all-deleted.png)
+*full cleanup flow, confirming No resources found*
 
 ---
 
