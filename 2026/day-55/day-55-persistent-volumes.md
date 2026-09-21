@@ -109,9 +109,9 @@ kubectl exec emptydir-demo -- cat /data/message.txt   # Check if old data is sti
 
 **Output:**
 
-![Pod created with emptyDir](2026/day-55/Screenshots/ss1-pod-create-emptydir.png)
+![Pod created with emptyDir](Screenshots/ss1-pod-create-emptydir.png)
 
-![Data loss proof - timestamps are different](2026/day-55/Screenshots/ss2-data-loss-proof.png)
+![Data loss proof - timestamps are different](Screenshots/ss2-data-loss-proof.png)
 
 ---
 
@@ -197,7 +197,7 @@ This means the PV was created successfully and is waiting to be claimed by a PVC
 
 **Output:**
 
-![PV created with status Available](2026/day-55/Screenshots/ss3-pv-created-available.png)
+![PV created with status Available](Screenshots/ss3-pv-created-available.png)
 
 ---
 
@@ -335,9 +335,9 @@ Both objects now cross-reference each other:
 
 **Output:**
 
-![PVC created, initially Pending due to StorageClass mismatch](2026/day-55/Screenshots/ss4-pvc-created-pending.png)
+![PVC created, initially Pending due to StorageClass mismatch](Screenshots/ss4-pvc-created-pending.png)
 
-![PVC and PV both Bound after fix](2026/day-55/Screenshots/ss5-pvc-pv-bound.png)
+![PVC and PV both Bound after fix](Screenshots/ss5-pvc-pv-bound.png)
 
 ---
 
@@ -418,9 +418,9 @@ kubectl exec pvc-demo-pod -- cat /data/message.txt   # This is "Pod #2" reading 
 
 **Output:**
 
-![Pod using PVC, first entry written](2026/day-55/Screenshots/ss6-pod-pvc-first-entry.png)
+![Pod using PVC, first entry written](Screenshots/ss6-pod-pvc-first-entry.png)
 
-![Data from both Pods present in the file after delete and recreate](2026/day-55/Screenshots/ss7-data-persisted-both-pods.png)
+![Data from both Pods present in the file after delete and recreate](Screenshots/ss7-data-persisted-both-pods.png)
 
 ---
 
@@ -466,7 +466,7 @@ You can tell it's the default because `kubectl get storageclass` shows `standard
 
 **Output:**
 
-![StorageClass details showing provisioner, reclaim policy, and binding mode](2026/day-55/Screenshots/ss8-storageclass-details.png)
+![StorageClass details showing provisioner, reclaim policy, and binding mode](Screenshots/ss8-storageclass-details.png)
 
 ---
 
@@ -568,11 +568,11 @@ You can also tell them apart by their `STORAGECLASS` and `RECLAIM POLICY` column
 
 **Output:**
 
-![Dynamic PVC created, initially Pending due to WaitForFirstConsumer](2026/day-55/Screenshots/ss9-dynamic-pvc-pending.png)
+![Dynamic PVC created, initially Pending due to WaitForFirstConsumer](Screenshots/ss9-dynamic-pvc-pending.png)
 
-![Pod created using the dynamic PVC](2026/day-55/Screenshots/ss10-dynamic-pod-created.png)
+![Pod created using the dynamic PVC](Screenshots/ss10-dynamic-pod-created.png)
 
-![Both PVs visible, Bound status, and data verified](2026/day-55/Screenshots/ss11-dynamic-provisioning-proof.png)
+![Both PVs visible, Bound status, and data verified](Screenshots/ss11-dynamic-provisioning-proof.png)
 
 ---
 
@@ -636,7 +636,7 @@ The final output should show `No resources found` — everything is now clean.
 
 **Output:**
 
-![Full cleanup - pods deleted, PVCs deleted, dynamic PV gone, manual PV Released, then manually deleted](2026/day-55/Screenshots/ss12-cleanup-final.png)
+![Full cleanup - pods deleted, PVCs deleted, dynamic PV gone, manual PV Released, then manually deleted](Screenshots/ss12-cleanup-final.png)
 
 ---
 
