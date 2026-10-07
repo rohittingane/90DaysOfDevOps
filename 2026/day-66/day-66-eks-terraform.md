@@ -661,8 +661,6 @@ Apply with `kubectl apply -f k8s/nginx-deployment.yaml` and delete with `kubectl
 
 ![EC2 worker node is Running](Screenshots/task3-02-console-ec2-node.png)
 
-![Load balancer created by the nginx Service](Screenshots/task3-03-console-elb-before.png)
-
 ![NAT gateway is Available](Screenshots/task3-04-console-nat-gateway.png)
 
 > The second EC2 instance in the list is my own terminal machine, not part of the cluster. Do **not** delete it.
@@ -692,13 +690,9 @@ kubectl get pods
 
 - After this, `get svc` should show only `kubernetes`, and `get pods` should say `No resources found`.
 
-![Kubernetes resources deleted](Screenshots/task3-05-k8s-resources-deleted.png)
-
 **Step 2: confirm the load balancer is gone**
 
 Open **AWS Console → EC2 → Load Balancers** (same region), click refresh, and wait until the list is empty. It can take 1 to 2 minutes.
-
-![Load balancers list is empty](Screenshots/task4-04-console-elb-empty.png)
 
 **Step 3: destroy with Terraform**
 
@@ -710,32 +704,68 @@ terraform destroy
 - It takes about 10 to 15 minutes.
 - At the end you will see `Destroy complete! Resources: XX destroyed.`
 
-![terraform destroy complete](Screenshots/task4-01-terraform-destroy-complete.png)
-
 **Step 4: verify in the AWS console**
 
-| Check | Expected | Screenshot |
-|---|---|---|
-| EKS → Clusters | Empty | see below |
-| EC2 → Instances | No `terraweek_nodes` instance | see below |
-| EC2 → Load Balancers | Empty | shown in Step 2 |
-| VPC → NAT gateways | Deleted or gone | see below |
-| VPC → Elastic IPs | Empty (released) | see below |
-| VPC → Your VPCs | The `terraweek-eks-vpc` is gone | see below |
-
-![EKS clusters empty](Screenshots/task4-02-console-eks-empty.png)
-
-![EC2 node instance gone](Screenshots/task4-03-console-ec2-after.png)
-
-![NAT gateway deleted](Screenshots/task4-05-console-nat-deleted.png)
-
-![Elastic IPs empty](Screenshots/task4-06-console-eip-empty.png)
-
-![terraweek VPC gone](Screenshots/task4-07-console-vpc-gone.png)
+| Check | Expected |
+|---|---|
+| EKS → Clusters | Empty |
+| EC2 → Instances | No `terraweek_nodes` instance |
+| EC2 → Load Balancers | Empty |
+| VPC → NAT gateways | Deleted or gone |
+| VPC → Elastic IPs | Empty (released) |
+| VPC → Your VPCs | The `terraweek-eks-vpc` is gone |
 
 > The **default VPC** and my own terminal EC2 machine remain. They are not part of this project.
 
-**If `terraform destroy` gets stuck:** check for a leftover load balancer, network interface (ENI) or security group inside the VPC, delete it, then run `terraform destroy` again.
+### Problem I faced during destroy: `Cluster has nodegroups attached`
+
+My first `terraform destroy` stopped with this error:
+
+```
+Error: deleting EKS Cluster (terraweek-eks): ... 409,
+ResourceInUseException: Cluster has nodegroups attached
+```
+
+**What it means:** AWS will not delete an EKS cluster while a node group is still attached to it.
+
+**Why it happened:** My first `apply` used `t3.medium`, which my Free Tier account did not allow, so that node group ended in `CREATE_FAILED`. Terraform did not manage it any more, so `terraform destroy` could not remove it.
+
+**How I fixed it:**
+
+**Step 1: list the node groups of the cluster**
+
+```bash
+aws eks list-nodegroups --cluster-name terraweek-eks --region eu-north-1
+```
+
+**Step 2: check its status** (use the real name from Step 1)
+
+```bash
+aws eks describe-nodegroup --cluster-name terraweek-eks --region eu-north-1 \
+  --nodegroup-name <nodegroup-name> --query nodegroup.status
+```
+
+The status was `"CREATE_FAILED"`.
+
+**Step 3: delete it manually**
+
+```bash
+aws eks delete-nodegroup --cluster-name terraweek-eks --region eu-north-1 \
+  --nodegroup-name <nodegroup-name>
+```
+
+**Step 4: wait until it is fully deleted**
+
+```bash
+aws eks wait nodegroup-deleted --cluster-name terraweek-eks --region eu-north-1 \
+  --nodegroup-name <nodegroup-name>
+```
+
+This prints nothing and takes 5 to 15 minutes. When the prompt comes back, the node group is gone.
+
+**Step 5: run `terraform destroy` again.** This time the cluster could be deleted.
+
+**Other reasons `terraform destroy` can get stuck:** a leftover load balancer, network interface (ENI) or security group inside the VPC. Delete it, then run `terraform destroy` again.
 
 ---
 
@@ -763,6 +793,7 @@ The Terraform code lives in `terraform-eks/` (`providers.tf`, `vpc.tf`, `eks.tf`
 ### Problem I faced
 
 - **`t3.medium` was not allowed** on my Free Tier account. I changed the node type to `t3.small` in `terraform.tfvars` and ran `terraform apply` again. This shows the benefit of variables: one value changed, no code rewritten.
+- **Destroy failed with a 409 error** because the failed `t3.medium` node group was still attached to the cluster. I deleted it manually with the AWS CLI and ran `terraform destroy` again (see Task 6).
 
 ### Reflection: this vs kind/minikube (Day 50)
 
